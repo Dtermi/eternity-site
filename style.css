@@ -118,18 +118,56 @@ p {
     background: rgba(168, 85, 247, 0.3);
     box-shadow: 0 0 20px #a855f7;
 }
+/* Универсальная карточка */
+.card {
+    position: relative;
+    padding: 30px;
+    border-radius: 18px;
+    margin-bottom: 35px;
+    backdrop-filter: blur(15px);
+    transition: 0.4s ease;
+    overflow: hidden;
+}
+
+/* Разные варианты карточек */
+.card.chat {
+    background: linear-gradient(145deg, rgba(90, 40, 160, 0.4), rgba(40, 10, 90, 0.4));
+    border-left: 6px solid #a855f7;
+}
+
+.card.activity {
+    background: linear-gradient(145deg, rgba(70, 30, 130, 0.4), rgba(30, 10, 70, 0.4));
+    border-left: 6px solid #7c3aed;
+}
+
+.card.voice {
+    background: linear-gradient(145deg, rgba(110, 50, 180, 0.4), rgba(40, 15, 90, 0.4));
+    border-left: 6px solid #c084fc;
+}
+
+.card.admin {
+    background: linear-gradient(145deg, rgba(60, 20, 120, 0.4), rgba(25, 5, 60, 0.4));
+    border-left: 6px solid #9333ea;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
+}
+
+/* Списки */
 .card ul {
     list-style: none;
-    padding-left: 0;
+    margin-top: 15px;
 }
 
 .card li {
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
     transition: 0.3s;
 }
 
 .card li:hover {
-    padding-left: 10px;
-    color: #c084fc;
+    padding-left: 12px;
+    color: #e9d5ff;
 }
