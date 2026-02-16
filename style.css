@@ -114,3 +114,7 @@ p {
     transform: scale(1.05);
     box-shadow: 0 0 30px rgba(168, 85, 247, 0.9);
 }
+.sidebar a.active {
+    background: rgba(168, 85, 247, 0.3);
+    box-shadow: 0 0 20px #a855f7;
+}
