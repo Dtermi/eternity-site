@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ETERNITY</title>
 
 <style>
@@ -13,90 +14,66 @@
     box-sizing: border-box;
 }
 
-<canvas id="particles"></canvas>
-
-<script>
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.style.position = "fixed";
-canvas.style.top = "0";
-canvas.style.left = "0";
-canvas.style.zIndex = "-1";
-
-function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener("resize", resize);
-
-let particles = [];
-
-for (let i = 0; i < 80; i++) {
-    particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2 + 1,
-        dx: (Math.random() - 0.5) * 0.5,
-        dy: (Math.random() - 0.5) * 0.5
-    });
-}
-
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "rgba(168, 85, 247, 0.8)";
-
-    particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fill();
-
-        p.x += p.dx;
-        p.y += p.dy;
-
-        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-    });
-
-    requestAnimationFrame(animate);
-}
-
-animate();
-</script>
-    
 body {
     font-family: 'Minecraft', sans-serif;
     color: white;
+    background: radial-gradient(circle at center, #1a0f2e 0%, #0f0a1a 70%);
     overflow-x: hidden;
-    background: linear-gradient(-45deg, #0f0a1a, #1a0f2e, #120a24, #1f1036);
-    background-size: 400% 400%;
-    animation: gradientBG 12s ease infinite;
 }
 
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* ===== Частицы ===== */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
+/* ===== Sidebar ===== */
 .sidebar {
     position: fixed;
     width: 240px;
     height: 100vh;
-    backdrop-filter: blur(15px);
-    background: rgba(20, 10, 40, 0.7);
+    background: rgba(20, 10, 40, 0.85);
+    backdrop-filter: blur(12px);
     padding: 30px 20px;
     border-right: 1px solid rgba(168, 85, 247, 0.3);
 }
 
 .sidebar h2 {
     color: #c084fc;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     text-shadow: 0 0 20px #a855f7;
+    font-size: 28px;
 }
 
 .sidebar a {
     display: block;
-    margin: 15
+    margin: 15px 0;
+    padding: 12px;
+    text-decoration: none;
+    color: white;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.sidebar a:hover {
+    background: rgba(168, 85, 247, 0.2);
+    transform: translateX(6px);
+    box-shadow: 0 0 20px #7c3aed;
+}
+
+/* ===== Content ===== */
+.content {
+    margin-left: 260px;
+    padding: 100px 60px;
+}
+
+/* Hero Section */
+.hero {
+    max-width: 700px;
+    animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+    from {opacity: 0; transform: translateY(30px);}
