@@ -6,74 +6,41 @@
 <title>ETERNITY</title>
 
 <style>
-@import url('https://fonts.cdnfonts.com/css/minecraft-4');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Minecraft', sans-serif;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #120a24;
     color: white;
-    background: radial-gradient(circle at center, #1a0f2e 0%, #0f0a1a 70%);
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
-/* ===== Частицы ===== */
-canvas {
+/* Canvas */
+#particles {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: 0;
 }
 
-/* ===== Sidebar ===== */
+/* Sidebar */
 .sidebar {
     position: fixed;
-    width: 240px;
+    width: 220px;
     height: 100vh;
-    background: rgba(20, 10, 40, 0.85);
-    backdrop-filter: blur(12px);
-    padding: 30px 20px;
-    border-right: 1px solid rgba(168, 85, 247, 0.3);
+    background: rgba(30, 15, 60, 0.9);
+    padding: 20px;
+    z-index: 2;
 }
 
 .sidebar h2 {
     color: #c084fc;
-    margin-bottom: 40px;
-    text-shadow: 0 0 20px #a855f7;
-    font-size: 28px;
 }
 
 .sidebar a {
     display: block;
     margin: 15px 0;
-    padding: 12px;
-    text-decoration: none;
     color: white;
-    border-radius: 8px;
-    transition: 0.3s ease;
+    text-decoration: none;
 }
 
-.sidebar a:hover {
-    background: rgba(168, 85, 247, 0.2);
-    transform: translateX(6px);
-    box-shadow: 0 0 20px #7c3aed;
-}
-
-/* ===== Content ===== */
-.content {
-    margin-left: 260px;
-    padding: 100px 60px;
-}
-
-/* Hero Section */
-.hero {
-    max-width: 700px;
-    animation: fadeUp 1s ease;
-}
-
-@keyframes fadeUp {
-    from {opacity: 0; transform: translateY(30px);}
+/* Content */
