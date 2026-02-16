@@ -118,3 +118,18 @@ p {
     background: rgba(168, 85, 247, 0.3);
     box-shadow: 0 0 20px #a855f7;
 }
+.card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.card li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+    transition: 0.3s;
+}
+
+.card li:hover {
+    padding-left: 10px;
+    color: #c084fc;
+}
