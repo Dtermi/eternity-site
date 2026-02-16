@@ -261,3 +261,8 @@ p {
 .card.server h3 {
     color: #f0abfc;
 }
+.card h3 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
