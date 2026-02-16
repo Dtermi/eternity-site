@@ -2,45 +2,127 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ETERNITY</title>
 
 <style>
-body {
+@import url('https://fonts.cdnfonts.com/css/minecraft-4');
+
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #120a24;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Minecraft', sans-serif;
     color: white;
-    overflow: hidden;
+    overflow-x: hidden;
+    background: linear-gradient(-45deg, #0f0a1a, #1a0f2e, #120a24, #1f1036);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
 }
 
-/* Canvas */
-#particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 0;
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-/* Sidebar */
 .sidebar {
     position: fixed;
-    width: 220px;
+    width: 240px;
     height: 100vh;
-    background: rgba(30, 15, 60, 0.9);
-    padding: 20px;
-    z-index: 2;
+    backdrop-filter: blur(15px);
+    background: rgba(20, 10, 40, 0.7);
+    padding: 30px 20px;
+    border-right: 1px solid rgba(168, 85, 247, 0.3);
 }
 
 .sidebar h2 {
     color: #c084fc;
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px #a855f7;
 }
 
 .sidebar a {
     display: block;
     margin: 15px 0;
-    color: white;
+    padding: 12px;
     text-decoration: none;
+    color: white;
+    border-radius: 8px;
+    transition: 0.3s ease;
 }
 
-/* Content */
+.sidebar a:hover {
+    background: rgba(168, 85, 247, 0.2);
+    transform: translateX(6px);
+    box-shadow: 0 0 20px #7c3aed;
+}
+
+.content {
+    margin-left: 260px;
+    padding: 80px 60px;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 25px;
+    color: #e9d5ff;
+    text-shadow: 0 0 25px #a855f7;
+}
+
+p {
+    font-size: 18px;
+    color: #ddd;
+    margin-bottom: 20px;
+    max-width: 600px;
+}
+
+.main-button {
+    background: linear-gradient(45deg, #7c3aed, #a855f7);
+    border: none;
+    padding: 14px 28px;
+    font-family: 'Minecraft', sans-serif;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+}
+
+.main-button:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 35px rgba(168, 85, 247, 1);
+}
+</style>
+
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>ETERNITY</h2>
+    <a href="index.html">Главная</a>
+    <a href="rules.html">Правила</a>
+    <a href="stats.html">Статистика</a>
+    <a href="map.html">Карта</a>
+    <a href="donate.html">Донат</a>
+    <a href="links.html">Ссылки</a>
+</div>
+
+<div class="content">
+    <h1>Добро пожаловать в ETERNITY</h1>
+    <p>Vanilla+ сервер Minecraft 1.21.1 с уникальными механиками, переработанной рыбой, фермерством и кастомными возможностями.</p>
+
+    <button class="main-button">Присоединиться</button>
+</div>
+
+</body>
+</html>
