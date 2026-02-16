@@ -1,0 +1,39 @@
+@import url('https://fonts.cdnfonts.com/css/minecraft-4');
+
+body {
+    margin: 0;
+    font-family: 'Minecraft', sans-serif;
+    background: #0f0a1a;
+    color: white;
+}
+
+.sidebar {
+    position: fixed;
+    width: 220px;
+    height: 100vh;
+    background: #1b1230;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    color: #a855f7;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 15px 0;
+    padding: 8px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #6d28d9;
+}
+
+.content {
+    margin-left: 240px;
+    padding: 40px;
+}
