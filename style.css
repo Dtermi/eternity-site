@@ -1,61 +1,116 @@
 @import url('https://fonts.cdnfonts.com/css/minecraft-4');
 
-body {
+* {
     margin: 0;
-    font-family: 'Minecraft', sans-serif;
-    background: #0f0a1a;
-    color: white;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: 'Minecraft', sans-serif;
+    color: white;
+    overflow-x: hidden;
+    background: linear-gradient(-45deg, #0f0a1a, #1a0f2e, #120a24, #1f1036);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+/* Анимация фона */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Sidebar */
 .sidebar {
     position: fixed;
-    width: 220px;
+    width: 240px;
     height: 100vh;
-    background: #1b1230;
-    padding: 20px;
+    backdrop-filter: blur(15px);
+    background: rgba(20, 10, 40, 0.6);
+    padding: 30px 20px;
+    border-right: 1px solid rgba(168, 85, 247, 0.3);
 }
 
 .sidebar h2 {
-    color: #a855f7;
+    color: #c084fc;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px #a855f7;
 }
 
 .sidebar a {
     display: block;
-    color: white;
-    text-decoration: none;
     margin: 15px 0;
-    padding: 8px;
-    border-radius: 6px;
-    transition: 0.3s;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 8px;
+    transition: 0.3s ease;
 }
 
 .sidebar a:hover {
-    background: #6d28d9;
+    background: rgba(168, 85, 247, 0.2);
+    transform: translateX(5px);
+    box-shadow: 0 0 15px #7c3aed;
 }
 
+/* Контент */
 .content {
-    margin-left: 240px;
-    padding: 40px;
+    margin-left: 260px;
+    padding: 60px;
+    animation: fadeIn 1s ease;
 }
-.card {
-    background: #1e1533;
-    padding: 20px;
-    border-radius: 12px;
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #e9d5ff;
+    text-shadow: 0 0 20px #a855f7;
+}
+
+p {
+    font-size: 18px;
+    color: #ddd;
     margin-bottom: 20px;
 }
 
-.main-button {
-    background: #7c3aed;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-family: 'Minecraft', sans-serif;
-    border-radius: 8px;
-    cursor: pointer;
+/* Карточки */
+.card {
+    background: rgba(40, 20, 70, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(168, 85, 247, 0.2);
     transition: 0.3s;
 }
 
-.main-button:hover {
-    background: #a855f7;
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.5);
 }
 
+/* Кнопки */
+.main-button {
+    background: linear-gradient(45deg, #7c3aed, #a855f7);
+    border: none;
+    padding: 14px 25px;
+    font-family: 'Minecraft', sans-serif;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 16px;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+}
+
+.main-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.9);
+}
