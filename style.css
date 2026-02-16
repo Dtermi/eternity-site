@@ -37,3 +37,25 @@ body {
     margin-left: 240px;
     padding: 40px;
 }
+.card {
+    background: #1e1533;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.main-button {
+    background: #7c3aed;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-family: 'Minecraft', sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main-button:hover {
+    background: #a855f7;
+}
+
