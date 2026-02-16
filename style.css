@@ -253,3 +253,11 @@ p {
 .news-card a:hover {
     color: white;
 }
+.card.server {
+    background: linear-gradient(145deg, rgba(120, 50, 200, 0.4), rgba(50, 15, 100, 0.4));
+    border-left: 6px solid #e879f9;
+}
+
+.card.server h3 {
+    color: #f0abfc;
+}
