@@ -337,3 +337,50 @@ p {
         opacity: 0.18;
     }
 }
+/* ===== PRO ENDERMEN BACKGROUND ===== */
+
+.end-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Общий стиль */
+.enderman {
+    position: absolute;
+    bottom: 0;
+    height: 70vh;
+    opacity: 0.25;
+    filter: brightness(0.3) contrast(1.4);
+    transition: 0.6s ease;
+}
+
+/* Первый */
+.end1 {
+    left: 10%;
+    animation: teleport1 12s infinite ease-in-out;
+}
+
+/* Второй */
+.end2 {
+    right: 5%;
+    height: 80vh;
+    animation: teleport2 15s infinite ease-in-out;
+}
+
+/* Телепорт эффект */
+@keyframes teleport1 {
+    0% { opacity: 0.05; transform: translateY(20px); }
+    20% { opacity: 0.25; transform: translateY(0px); }
+    80% { opacity: 0.25; }
+    100% { opacity: 0.05; transform: translateY(-20px); }
+}
+
+@keyframes teleport2 {
+    0% { opacity: 0.05; transform: translateY(-20px); }
+    30% { opacity: 0.3; transform: translateY(0px); }
+    85% { opacity: 0.3; }
+    100% { opacity: 0.05; transform: translateY(20px); }
+}
