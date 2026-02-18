@@ -3,105 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <title>ETERNITY | Правила</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="rules-dark.css">
 </head>
 <body>
 
-<div class="cosmic-background">
-    <div class="layer layer1"></div>
-    <div class="layer layer2"></div>
-    <div class="layer layer3"></div>
-</div>
+<div class="rules-layout">
 
-<div class="sidebar">
-    <h2>ETERNITY</h2>
-    <a href="index.html">Главная</a>
-    <a href="rules.html" class="active">Правила</a>
-    <a href="stats.html">Статистика</a>
-    <a href="map.html">Карта</a>
-    <a href="donate.html">Донат</a>
-    <a href="links.html">Ссылки</a>
-</div>
+    <!-- ЛЕВАЯ НАВИГАЦИЯ -->
+    <aside class="rules-sidebar">
+        <h2>ETERNITY</h2>
 
-<div class="content rules-page">
+        <button onclick="showSection('intro')" class="active">Введение</button>
+        <button onclick="showSection('basic')">Основные положения</button>
+        <button onclick="showSection('chat')">Правила чата</button>
+        <button onclick="showSection('activity')">Активность</button>
+        <button onclick="showSection('game')">Игровые правила</button>
+        <button onclick="showSection('pvp')">PvP</button>
+        <button onclick="showSection('extra')">Дополнительно</button>
+    </aside>
 
-    <div class="rules-hero">
-        <h1>Правила ETERNITY</h1>
-        <p>Создаём комфортную атмосферу для всех игроков Vanilla+ сервера</p>
-    </div>
+    <!-- КОНТЕНТ -->
+    <main class="rules-content">
 
-    <!-- ВАЖНО -->
-    <section class="rules-section glass">
-        <div class="section-header">
-            <span class="icon">⚠</span>
-            <h2>Основные положения</h2>
-        </div>
+        <section id="intro" class="rules-section visible">
+            <h1>Введение</h1>
+            <p>
+                Добро пожаловать на сервер ETERNITY.
+                Это Vanilla+ проект с переработанными механиками,
+                кастомными системами и живым сообществом.
+            </p>
+            <p>
+                Эти правила созданы для поддержания честной,
+                стабильной и комфортной атмосферы.
+            </p>
+        </section>
 
-        <div class="rules-grid">
-            <div class="rule-item">Правила могут изменяться.</div>
-            <div class="rule-item">Незнание правил не освобождает от ответственности.</div>
-            <div class="rule-item">Соблюдайте уважительную атмосферу.</div>
-            <div class="rule-item">Администрация имеет право принимать окончательное решение.</div>
-            <div class="rule-item">Систематические нарушения могут привести к блокировке.</div>
-        </div>
-    </section>
-
-    <!-- ЧАТ -->
-    <section class="rules-section glass">
-        <div class="section-header">
-            <span class="icon">💬</span>
-            <h2>Правила чата</h2>
-        </div>
-
-        <div class="rules-grid">
-            <div class="rule-item">Без оскорблений и токсичности.</div>
-            <div class="rule-item">Без провокаций и конфликтов.</div>
-            <div class="rule-item">Без политических обсуждений в негативном ключе.</div>
-            <div class="rule-item">Запрещён спам и флуд.</div>
-            <div class="rule-item">Без 18+ и шок-контента.</div>
-            <div class="rule-item">Без рекламы без согласования.</div>
-            <div class="rule-item">Запрещено распространение личной информации.</div>
-            <div class="rule-item">Уважайте решения администрации.</div>
-        </div>
-    </section>
-
-    <!-- АКТИВНОСТЬ -->
-    <section class="rules-section glass">
-        <div class="section-header">
-            <span class="icon">📊</span>
-            <h2>Активность</h2>
-        </div>
-
-        <div class="rules-grid">
-            <div class="rule-item">Минимум 100 сообщений в неделю.</div>
-            <div class="rule-item">Очистка неактивных — каждое воскресенье.</div>
-            <div class="rule-item">Если отсутствуете — оформляйте рест.</div>
-            <div class="rule-item">Вернуться можно не более 3 раз.</div>
-        </div>
-    </section>
-
-    <!-- СЕРВЕР -->
-    <section class="rules-section glass">
-        <div class="section-header">
-            <span class="icon">🛡</span>
-            <h2>Правила сервера</h2>
-        </div>
-
-        <div class="rules-grid">
-            <div class="rule-item">Строго запрещены читы.</div>
-            <div class="rule-item">Запрещён любой гриф.</div>
-            <div class="rule-item">Нельзя ломать чужие постройки.</div>
-            <div class="rule-item">Нельзя красть ресурсы.</div>
-            <div class="rule-item">PvP только по согласию.</div>
-            <div class="rule-item">Полностью срубать деревья и застраивать дыры.</div>
-        </div>
-    </section>
-
-</div>
-
-
-<canvas id="particles-canvas"></canvas>
-<script src="particles.js"></script>
-
-</body>
-</html>
+        <section id="basic" class="rules-section">
+            <h1>Основные положения</h1>
+            <ul>
+                <li>Правила могут изменяться.</li>
+                <li>Незнание правил не освобождает от ответственности.</li>
