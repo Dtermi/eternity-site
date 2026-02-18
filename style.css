@@ -267,3 +267,60 @@ p {
     height: 100%;
     z-index: -1;
 }
+.rules-block {
+    margin-bottom: 50px;
+    padding: 35px;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    transition: 0.4s ease;
+}
+
+.rules-block:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
+}
+
+.rules-block h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: #e9d5ff;
+    text-shadow: 0 0 15px #a855f7;
+}
+
+.rules-block ul {
+    list-style: none;
+}
+
+.rules-block li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: 0.3s;
+    line-height: 1.6;
+}
+
+.rules-block li:hover {
+    padding-left: 10px;
+    color: #f3e8ff;
+}
+
+/* Разные стили блоков */
+.important {
+    background: linear-gradient(145deg, rgba(120, 40, 200, 0.4), rgba(50, 10, 100, 0.4));
+    border-left: 6px solid #f472b6;
+}
+
+.chat-rules {
+    background: linear-gradient(145deg, rgba(90, 30, 160, 0.4), rgba(40, 10, 80, 0.4));
+    border-left: 6px solid #a855f7;
+}
+
+.activity-rules {
+    background: linear-gradient(145deg, rgba(70, 25, 130, 0.4), rgba(30, 10, 70, 0.4));
+    border-left: 6px solid #7c3aed;
+}
+
+.server-rules {
+    background: linear-gradient(145deg, rgba(110, 40, 180, 0.4), rgba(40, 15, 90, 0.4));
+    border-left: 6px solid #c084fc;
+}
