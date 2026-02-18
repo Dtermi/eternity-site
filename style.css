@@ -267,3 +267,73 @@ p {
     height: 100%;
     z-index: -1;
 }
+/* ===== ENDERMEN BACKGROUND ===== */
+
+.endermen-background {
+    position: fixed;
+    inset: 0;
+    z-index: -8;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Общий стиль эндермена */
+.enderman {
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    height: 220px;
+    background: linear-gradient(to bottom, #0d0a15, #000000);
+    border-radius: 8px;
+    opacity: 0.15;
+    animation: float 6s ease-in-out infinite alternate;
+}
+
+/* Глаза */
+.enderman::before,
+.enderman::after {
+    content: "";
+    position: absolute;
+    top: 40px;
+    width: 14px;
+    height: 6px;
+    background: #c084fc;
+    box-shadow: 0 0 10px #a855f7, 0 0 20px #9333ea;
+}
+
+.enderman::before {
+    left: 18px;
+}
+
+.enderman::after {
+    right: 18px;
+}
+
+/* Разные позиции */
+.e1 {
+    left: 15%;
+    animation-delay: 0s;
+}
+
+.e2 {
+    left: 50%;
+    height: 250px;
+    animation-delay: 2s;
+}
+
+.e3 {
+    left: 80%;
+    animation-delay: 4s;
+}
+
+/* Лёгкое движение */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+        opacity: 0.1;
+    }
+    100% {
+        transform: translateY(-15px);
+        opacity: 0.18;
+    }
+}
