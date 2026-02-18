@@ -129,6 +129,55 @@ h1 {
     margin-bottom: 10px;
     color: #ff8080;
 }
+/* ОБЁРТКА РАЗДЕЛОВ */
+
+.sections-wrapper {
+    margin-top: 50px;
+    padding: 50px;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    box-shadow: 0 0 60px rgba(255, 0, 0, 0.15);
+}
+
+.sections-title {
+    margin-bottom: 40px;
+    font-size: 30px;
+    color: #ff4d4d;
+    text-shadow: 0 0 20px red;
+}
+
+/* ОБНОВЛЁННЫЕ КАРТОЧКИ */
+
+.rule-card {
+    text-decoration: none;
+    color: white;
+    padding: 50px 30px;
+    border-radius: 25px;
+    background: linear-gradient(145deg, rgba(255, 0, 0, 0.08), rgba(20, 0, 0, 0.6));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 0, 0, 0.25);
+    transition: 0.4s ease;
+    text-align: center;
+}
+
+.rule-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #ff6666;
+}
+
+.rule-card p {
+    font-size: 15px;
+    opacity: 0.75;
+}
+
+.rule-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.4);
+    border-color: #ff0000;
+}
 
 .rule-card p {
     font-size: 14px;
