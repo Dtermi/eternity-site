@@ -351,3 +351,84 @@ p {
     background: rgba(120, 50, 200, 0.4);
     transform: scale(1.03);
 }
+body {
+  margin: 0;
+  background: #050505;
+  font-family: Arial;
+  color: white;
+  overflow: hidden;
+}
+
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #0a0a0a;
+  border-right: 1px solid red;
+  padding-top: 80px;
+  position: fixed;
+}
+
+.sidebar a {
+  display: block;
+  padding: 15px 30px;
+  color: #aaa;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background: rgba(255,0,0,0.2);
+  color: white;
+}
+
+.content {
+  margin-left: 250px;
+  padding: 80px;
+}
+
+h1 {
+  font-size: 40px;
+  color: red;
+  text-shadow: 0 0 20px red;
+}
+
+.card {
+  background: rgba(20,0,0,0.6);
+  border: 1px solid red;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 40px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 0 30px red;
+}
+
+.back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background: red;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  box-shadow: 0 0 15px red;
+  transition: 0.3s;
+}
+
+.back:hover {
+  transform: translateY(-3px);
+}
