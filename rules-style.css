@@ -73,3 +73,64 @@ h1 {
     left: 0;
     z-index: 1;
 }
+.hero-block {
+    padding: 40px;
+    border-radius: 25px;
+    background: rgba(255, 0, 0, 0.06);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 0, 0, 0.25);
+    margin-bottom: 50px;
+    box-shadow: 0 0 40px rgba(255,0,0,0.15);
+}
+
+.hero-block p {
+    margin-top: 15px;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.section-title {
+    margin: 60px 0 30px 0;
+    font-size: 28px;
+    color: #ff6666;
+    text-shadow: 0 0 15px red;
+}
+
+.info-strip {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.info-box {
+    flex: 1;
+    min-width: 220px;
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(255, 0, 0, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(255,0,0,0.3);
+}
+
+.info-box h3 {
+    margin-bottom: 10px;
+    color: #ff4d4d;
+}
+
+.rule-card h3 {
+    margin-bottom: 10px;
+    color: #ff8080;
+}
+
+.rule-card p {
+    font-size: 14px;
+    opacity: 0.7;
+}
