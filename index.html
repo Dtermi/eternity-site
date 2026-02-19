@@ -1,137 +1,97 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>ETERNITY</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>The Server — Главное меню</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Minecraft Font -->
+  <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="main-style.css" />
+
+  <!-- Particles -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
 
-<div class="end-world">
-    <div class="fog-layer"></div>
+  <!-- Общие particles как на правилах -->
+  <div id="particles-js"></div>
 
-    <div class="island i1"></div>
-    <div class="island i2"></div>
-    <div class="island i3"></div>
-    <div class="island i4"></div>
-    <div class="island i5"></div>
-</div>
+  <!-- Навигация -->
+  <nav class="navbar">
+    <div class="logo">THE SERVER</div>
+    <div class="nav-links">
+      <a href="rules.html">Правила</a>
+      <a href="map.html">Карта</a>
+      <a href="donate.html">Донат</a>
+      <a href="stats.html">Статистика</a>
+    </div>
+  </nav>
 
-<div class="cosmic-background">
-    <div class="layer layer1"></div>
-    <div class="layer layer2"></div>
-    <div class="layer layer3"></div>
-</div>
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="hero-title">Добро пожаловать в мир The Server</h1>
+    <p class="hero-sub">Уют. Атмосфера. Свой Minecraft-мир.</p>
+    <a href="rules.html" class="cta-button">Начать играть</a>
+  </section>
 
-<div class="sidebar">
-    <h2>ETERNITY</h2>
-    <a href="index.html" class="active">Главная</a>
-    <a href="rules.html">Правила</a>
-    <a href="stats.html">Статистика</a>
-    <a href="map.html">Карта</a>
-    <a href="donate.html">Донат</a>
-    <a href="links.html">Ссылки</a>
-</div>
+  <!-- О проекте -->
+  <section class="section reveal">
+    <h2>О проекте</h2>
+    <p>
+      Мы создаём атмосферный Minecraft-проект, где важны комфорт, уважение и эстетика.
+      У нас нет хаоса — только живой мир, комьюнити и развитие.
+    </p>
+  </section>
 
-<div class="content">
+  <!-- Галерея -->
+  <section class="section reveal">
+    <h2>Галерея мира</h2>
+    <div class="gallery">
+      <img src="images/screen1.jpg" alt="">
+      <img src="images/screen2.jpg" alt="">
+      <img src="images/screen3.jpg" alt="">
+      <img src="images/screen4.jpg" alt="">
+    </div>
+  </section>
 
-    <!-- HERO -->
-    <section class="hero">
-        <h1>ETERNITY — Vanilla+ сервер</h1>
-        <p>
-            Уникальный Minecraft сервер версии 1.21.11  
-            с переработанной рыбалкой, фермерством, кастомными механиками  
-            и живым сообществом.
-        </p>
+  <!-- Новости -->
+  <section class="section reveal">
+    <h2>Последние новости</h2>
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>Обновление 1.0</h3>
+        <p>Добавлены новые зоны, улучшена экономика и PvP-баланс.</p>
+      </div>
+      <div class="news-card">
+        <h3>Ивент недели</h3>
+        <p>Турнир с призами для лучших игроков.</p>
+      </div>
+      <div class="news-card">
+        <h3>Новая система кланов</h3>
+        <p>Теперь можно создавать официальные кланы.</p>
+      </div>
+      <div class="news-card">
+        <h3>Оптимизация сервера</h3>
+        <p>Улучшена производительность и снижены лаги.</p>
+      </div>
+      <div class="news-card">
+        <h3>Новые косметические предметы</h3>
+        <p>Добавлены уникальные визуальные эффекты.</p>
+      </div>
+    </div>
+  </section>
 
-        <div class="hero-buttons">
-            <a href="https://t.me/eternityminecraft/412" target="_blank">
-                <button class="main-button">Присоединиться</button>
-            </a>
-            <a href="https://t.me/eternityminecraft" target="_blank">
-                <button class="secondary-button">Наш Telegram</button>
-            </a>
-        </div>
-    </section>
+  <!-- CTA -->
+  <section class="section reveal center">
+    <h2>Готов присоединиться?</h2>
+    <a href="donate.html" class="cta-button big">Поддержать проект</a>
+  </section>
 
-    <!-- NEWS -->
-    <section class="news-section">
-        <h2>Последние новости</h2>
-
-        <div class="news-grid">
-
-            <div class="news-card">
-                <div class="news-date">15.02.2026</div>
-                <h3>🏝 Один Блок!</h3>
-                <p>Пока наш сервер закрыт на технические работы, мы проводим межсезонье в довольно тесной — в буквальном смысле — команде!</p>
-                <a href="https://t.me/eternewsty" target="_blank">Читать далее →</a>
-            </div>
-
-            <div class="news-card">
-                <div class="news-date">13.02.2026</div>
-                <h3>🌸 День Валентина!</h3>
-                <p>Друзья,с наступающим праздником! Пусть этот день станет лишним поводом сказать добрые слова тем, кто вам дорог. А мы хотим сделать маленькое объявление.</p>
-                <a href="https://t.me/eternewsty" target="_blank">Читать далее →</a>
-            </div>
-
-            <div class="news-card">
-                <div class="news-date">14.02.2026</div>
-                <h3>🪷 Розыгрыш!</h3>
-                <p>РОЗЫГРЫШ ETERNITY💕 в честь дня влюбленных!!</p>
-                <a href="https://t.me/eternewsty" target="_blank">Читать далее →</a>
-            </div>
-
-        </div>
-    </section>
-    
-    <!-- GALLERY -->
-    <section class="gallery-section">
-        <h2>Мир ETERNITY</h2>
-        <p class="section-description">
-            Несколько кадров из жизни нашего сервера.
-        </p>
-
-        <div class="gallery-grid">
-            <img src="2025-10-18_15.17.59.png" alt="Скриншот 1">
-            <img src="images/screen2.jpg" alt="Скриншот 2">
-            <img src="images/screen3.jpg" alt="Скриншот 3">
-            <img src="images/screen4.jpg" alt="Скриншот 4">
-        </div>
-    </section>
-
-    <!-- FEATURES -->
-    <section class="features-section">
-        <h2>Особенности сервера</h2>
-
-        <div class="features-grid">
-
-            <div class="feature-card">
-                <h3>🎣 Переработанная рыбалка</h3>
-                <p>Новые виды рыбы, редкие уловы и уникальная экономика.</p>
-            </div>
-
-            <div class="feature-card">
-                <h3>🌾 Улучшенное фермерство</h3>
-                <p>Дополнительные механики выращивания и развития хозяйства.</p>
-            </div>
-
-            <div class="feature-card">
-                <h3>✨ Кастомные механики</h3>
-                <p>Уникальные системы, которые делают Vanilla+ глубже.</p>
-            </div>
-
-            <div class="feature-card">
-                <h3>👥 Закрытое сообщество</h3>
-                <p>Только отобранные участники формируют атмосферу проекта.</p>
-            </div>
-
-        </div>
-    </section>
-
-</div>
-
-<canvas id="particles-canvas"></canvas>
-<script src="particles.js"></script>
+  <script src="main-particles.js"></script>
+  <script src="main-animations.js"></script>
 
 </body>
 </html>
