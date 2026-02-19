@@ -1,95 +1,95 @@
 /* HERO */
 
-.hero-clean {
-    min-height: 80vh;
+.hero-screen {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
-
-    animation: fadeHero 1s ease forwards;
 }
 
-.hero-sub {
+.main-title {
+    font-size: 72px;
+    margin-bottom: 15px;
+}
+
+.hero-desc {
+    font-size: 20px;
+    opacity: 0.85;
+}
+
+.status-line {
     margin-top: 15px;
-    opacity: 0.8;
-    font-size: 18px;
+    font-size: 14px;
+    opacity: 0.6;
+    letter-spacing: 1px;
 }
 
-/* МЕНЮ */
+/* ВЕРТИКАЛЬНОЕ МЕНЮ */
 
-.clean-nav {
+.vertical-menu {
     margin-top: 50px;
     display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.clean-nav a {
+.vertical-menu a {
     text-decoration: none;
-    font-size: 18px;
+    font-size: 22px;
     color: white;
-    position: relative;
     transition: all 0.3s ease;
 }
 
-.clean-nav a::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: -6px;
-    left: 0;
-    background: #a855f7;
-    transition: 0.3s ease;
-}
-
-.clean-nav a:hover {
+.vertical-menu a:hover {
+    transform: translateX(8px);
     opacity: 0.8;
-    transform: translateY(-2px);
 }
 
-.clean-nav a:hover::after {
-    width: 100%;
+/* ABOUT */
+
+.about-world {
+    max-width: 700px;
+    margin: 120px auto 60px auto;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+/* РАЗДЕЛИТЕЛЬ */
+
+.glow-divider {
+    width: 200px;
+    height: 2px;
+    margin: 60px auto;
+    background: linear-gradient(to right, transparent, #a855f7, transparent);
 }
 
 /* НОВОСТИ */
 
-.news-clean {
+.news-section-clean {
     max-width: 900px;
     margin: 0 auto 120px auto;
     text-align: center;
 }
 
-.news-clean h2 {
+.news-section-clean h2 {
     margin-bottom: 30px;
-    font-weight: 400;
 }
 
-.divider {
-    height: 1px;
-    width: 200px;
-    margin: 60px auto;
-    background: linear-gradient(to right, transparent, #a855f7, transparent);
-}
-
-.telegram-clean {
+.telegram-embed {
     border-radius: 20px;
     overflow: hidden;
 }
 
-/* АНИМАЦИЯ */
+/* ФУТЕР */
 
-@keyframes fadeHero {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.minimal-footer {
+    text-align: center;
+    padding: 40px 0;
+    opacity: 0.5;
+    font-size: 14px;
 }
 
