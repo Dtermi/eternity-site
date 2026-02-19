@@ -1,6 +1,4 @@
-/* =========================
-   THE SERVER - RULES STYLE
-========================= */
+/* ===== THE SERVER RULES DESIGN ===== */
 
 * {
     margin: 0;
@@ -9,74 +7,115 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0f0f1a, #1a1033);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #0f0f1a;
     color: #ffffff;
+    overflow-x: hidden;
 }
 
-/* Заголовок */
+/* Фоновое свечение */
+.background-glow {
+    position: fixed;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(139,92,246,0.25), transparent 70%);
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+/* Шапка */
 header {
     text-align: center;
-    padding: 50px 20px 30px 20px;
+    padding: 80px 20px 40px;
 }
 
 header h1 {
-    font-size: 42px;
-    color: #a855f7;
-    text-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
+    font-size: 48px;
+    color: #c084fc;
+    text-shadow: 0 0 25px rgba(168,85,247,0.8);
+}
+
+.subtitle {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #d8b4fe;
 }
 
 /* Контейнер */
-.rules-container {
-    max-width: 900px;
-    margin: 0 auto 60px auto;
+.rules-wrapper {
+    max-width: 1000px;
+    margin: 0 auto 80px;
     padding: 20px;
 }
 
-/* Карточка правила */
-.rule-block {
-    background: rgba(40, 20, 70, 0.75);
-    border: 1px solid #7c3aed;
-    border-radius: 18px;
-    padding: 25px;
-    margin-bottom: 25px;
+/* Секции */
+.rules-section {
+    background: rgba(30, 15, 50, 0.8);
+    border: 1px solid rgba(139,92,246,0.4);
+    border-radius: 20px;
+    padding: 35px;
+    margin-bottom: 35px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(139,92,246,0.15);
     transition: 0.3s ease;
-    box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
 }
 
-.rule-block:hover {
+.rules-section:hover {
     transform: translateY(-6px);
-    box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+    box-shadow: 0 0 40px rgba(168,85,247,0.35);
 }
 
-/* Заголовок правила */
-.rule-block h2 {
-    color: #c084fc;
-    margin-bottom: 10px;
-    font-size: 20px;
+.rules-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #a855f7;
+    letter-spacing: 1px;
 }
 
-/* Текст */
-.rule-block p {
-    color: #e9d5ff;
-    line-height: 1.6;
+/* Списки */
+.rules-section ul {
+    list-style: none;
 }
 
-/* Кнопка назад */
+.rules-section li {
+    margin-bottom: 14px;
+    padding-left: 25px;
+    position: relative;
+    line-height: 1.7;
+    font-size: 17px;
+    color: #f3e8ff;
+}
+
+.rules-section li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #a855f7;
+    font-size: 22px;
+}
+
+/* Кнопка */
+.button-wrapper {
+    text-align: center;
+    margin-top: 40px;
+}
+
 .back-button {
     display: inline-block;
-    margin-top: 30px;
-    padding: 14px 35px;
-    border-radius: 30px;
+    padding: 15px 40px;
+    border-radius: 40px;
     background: linear-gradient(90deg, #7c3aed, #a855f7);
-    color: #ffffff;
+    color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 0 25px rgba(168,85,247,0.5);
     transition: 0.3s ease;
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
 }
 
 .back-button:hover {
-    background: linear-gradient(90deg, #a855f7, #7c3aed);
-    box-shadow: 0 0 30px rgba(168, 85, 247, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(168,85,247,0.8);
 }
