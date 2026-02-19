@@ -2,56 +2,44 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>ETERNITY | Главное меню</title>
+    <title>ETERNITY</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Minecraft Font -->
     <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
-
-    <!-- Основной стиль как в rules -->
     <link rel="stylesheet" href="rules-style.css">
-
-    <!-- Доп стиль главной -->
     <link rel="stylesheet" href="index-style.css">
 
-    <!-- Particles -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
 
 <div id="particles-js"></div>
 
-<header class="hero">
+<section class="hero-clean">
     <h1 class="glow-title">ETERNITY</h1>
-    <p class="subtitle">Мир, который продолжает жить и развиваться</p>
-</header>
+    <p class="hero-sub">Мир, который продолжает жить</p>
 
-<main class="rules-wrapper">
+    <nav class="clean-nav">
+        <a href="rules.html">Правила</a>
+        <a href="map.html">Карта</a>
+        <a href="stats.html">Статистика</a>
+        <a href="donate.html">Поддержать</a>
+        <a href="links.html">Ссылки</a>
+    </nav>
+</section>
 
-    <section class="rules-card reveal tilt center-block">
-        <h2>НАВИГАЦИЯ</h2>
-        <div class="main-links">
-            <a href="rules.html">Правила</a>
-            <a href="map.html">Карта мира</a>
-            <a href="stats.html">Статистика</a>
-            <a href="donate.html">Поддержать проект</a>
-            <a href="links.html">Соц. ссылки</a>
-        </div>
-    </section>
+<section class="news-clean">
+    <div class="divider"></div>
+    <h2>Последние новости</h2>
 
-    <section class="rules-card reveal tilt">
-        <h2>ПОСЛЕДНИЕ НОВОСТИ</h2>
-
-        <div class="telegram-wrapper">
-            <script async src="https://telegram.org/js/telegram-widget.js?22"
-                data-telegram-channel="eternewsty"
-                data-width="100%"
-                data-height="500">
-            </script>
-        </div>
-    </section>
-
-</main>
+    <div class="telegram-clean">
+        <script async src="https://telegram.org/js/telegram-widget.js?22"
+            data-telegram-channel="eternewsty"
+            data-width="100%"
+            data-height="500">
+        </script>
+    </div>
+</section>
 
 <script src="rules-particles.js"></script>
 <script src="rules-animations.js"></script>
