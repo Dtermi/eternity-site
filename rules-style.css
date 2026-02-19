@@ -1,77 +1,79 @@
-/* ===== Общие стили ===== */
-body {
+/* =========================
+   RULES PAGE - PURPLE THEME
+========================= */
+
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #0f0f1a, #1a0f2e);
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f0f1a, #1b102f);
     color: #ffffff;
 }
 
-/* ===== Заголовок ===== */
+/* Заголовок */
 header {
     text-align: center;
     padding: 40px 20px;
 }
 
 header h1 {
-    font-size: 42px;
-    color: #b366ff;
-    text-shadow: 0 0 15px rgba(179, 102, 255, 0.8);
+    font-size: 40px;
+    color: #a855f7;
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
 }
 
-/* ===== Контейнер правил ===== */
+/* Контейнер */
 .rules-container {
     max-width: 900px;
-    margin: 0 auto 60px;
+    margin: 0 auto;
     padding: 20px;
 }
 
-/* ===== Карточка правила ===== */
+/* Блок правила */
 .rule-block {
-    background: rgba(40, 20, 70, 0.6);
-    border: 1px solid #7a3cff;
-    border-radius: 15px;
-    padding: 20px 25px;
+    background: rgba(30, 15, 50, 0.7);
+    border: 1px solid #7c3aed;
+    border-radius: 16px;
+    padding: 20px;
     margin-bottom: 20px;
     transition: 0.3s ease;
-    box-shadow: 0 0 15px rgba(122, 60, 255, 0.3);
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
 }
 
 .rule-block:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 25px rgba(179, 102, 255, 0.6);
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
 }
 
-/* ===== Заголовок правила ===== */
 .rule-block h2 {
-    margin-top: 0;
-    color: #c084ff;
-    font-size: 22px;
+    color: #c084fc;
+    margin-bottom: 10px;
 }
 
-/* ===== Текст правила ===== */
 .rule-block p {
-    margin: 10px 0 0;
     line-height: 1.6;
-    color: #ddddff;
+    color: #e9d5ff;
 }
 
-/* ===== Кнопка назад ===== */
+/* Кнопка назад */
 .back-button {
     display: inline-block;
-    margin: 30px auto;
-    padding: 12px 25px;
+    margin: 40px auto;
+    padding: 12px 30px;
     border-radius: 30px;
-    background: linear-gradient(90deg, #7a3cff, #b366ff);
+    background: linear-gradient(90deg, #7c3aed, #a855f7);
     color: #ffffff;
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s ease;
-    box-shadow: 0 0 15px rgba(179, 102, 255, 0.5);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
 }
 
 .back-button:hover {
-    background: linear-gradient(90deg, #b366ff, #7a3cff);
-    box-shadow: 0 0 25px rgba(179, 102, 255, 0.9);
+    background: linear-gradient(90deg, #a855f7, #7c3aed);
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.9);
 }
-
