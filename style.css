@@ -564,3 +564,12 @@ textarea {
 .close:hover {
     color: #a970ff;
 }
+.content h1 {
+    text-align: center;
+    margin: 40px 0 20px 0;
+}
+
+.news-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
