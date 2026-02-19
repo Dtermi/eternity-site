@@ -1,95 +1,124 @@
-/* HERO */
-
-.hero-clean {
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    animation: fadeHero 1s ease forwards;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.hero-sub {
-    margin-top: 15px;
-    opacity: 0.8;
-    font-size: 18px;
-}
-
-/* МЕНЮ */
-
-.clean-nav {
-    margin-top: 50px;
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.clean-nav a {
-    text-decoration: none;
-    font-size: 18px;
+body {
+    font-family: 'Minecraft', sans-serif;
+    background: radial-gradient(circle at top, #1a0f2e 0%, #0f0f1a 60%);
     color: white;
-    position: relative;
-    transition: all 0.3s ease;
+    overflow-x: hidden;
 }
 
-.clean-nav a::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: -6px;
-    left: 0;
-    background: #a855f7;
-    transition: 0.3s ease;
-}
-
-.clean-nav a:hover {
-    opacity: 0.8;
-    transform: translateY(-2px);
-}
-
-.clean-nav a:hover::after {
+/* Particles */
+#particles-js {
+    position: fixed;
     width: 100%;
+    height: 100%;
+    z-index: -2;
 }
 
-/* НОВОСТИ */
-
-.news-clean {
-    max-width: 900px;
-    margin: 0 auto 120px auto;
+/* HERO */
+.hero {
     text-align: center;
+    padding: 120px 20px 60px;
 }
 
-.news-clean h2 {
+.glow-title {
+    font-size: 52px;
+    background: linear-gradient(90deg, #c084fc, #a855f7, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 6s infinite linear;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+}
+
+.subtitle {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #e9d5ff;
+}
+
+/* WRAPPER */
+.rules-wrapper {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* GLASS CARD */
+.rules-card {
+    background: rgba(40, 20, 70, 0.6);
+    border: 1px solid rgba(168,85,247,0.4);
+    border-radius: 25px;
+    padding: 50px;
+    margin-bottom: 50px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 40px rgba(168,85,247,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rules-card h2 {
+    font-size: 28px;
     margin-bottom: 30px;
-    font-weight: 400;
+    color: #c084fc;
 }
 
-.divider {
-    height: 1px;
-    width: 200px;
-    margin: 60px auto;
-    background: linear-gradient(to right, transparent, #a855f7, transparent);
+.rules-card ul {
+    list-style: none;
 }
 
-.telegram-clean {
-    border-radius: 20px;
-    overflow: hidden;
+.rules-card li {
+    font-size: 19px;
+    margin-bottom: 20px;
+    padding-left: 35px;
+    position: relative;
+    line-height: 1.8;
 }
 
-/* АНИМАЦИЯ */
+.rules-card li::before {
+    content: "◆";
+    position: absolute;
+    left: 0;
+    color: #a855f7;
+    font-size: 22px;
+}
 
-@keyframes fadeHero {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Floating Button */
+.floating-menu {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    padding: 18px 35px;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #7c3aed, #a855f7);
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    box-shadow: 0 0 30px rgba(168,85,247,0.6);
+    transition: 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-menu:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px rgba(192,132,252,0.9);
+}
+
+/* Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 1s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
