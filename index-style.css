@@ -1,71 +1,82 @@
+/* Используем фон как в rules */
+body {
+    margin: 0;
+    font-family: 'MinecraftCustom', sans-serif;
+    background: radial-gradient(circle at top, #1a002e 0%, #0a0015 60%);
+    color: white;
+    overflow: hidden;
+}
+
+/* Layout */
 .layout {
     display: flex;
     min-height: 100vh;
 }
 
-/* ЛЕВАЯ НАВИГАЦИЯ */
+/* Sidebar как в donate */
 .sidebar {
-    width: 220px;
-    padding: 50px 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    width: 240px;
+    background: rgba(20, 0, 40, 0.6);
+    backdrop-filter: blur(8px);
+    padding: 40px 25px;
+    border-right: 1px solid rgba(150, 80, 255, 0.2);
+}
+
+.sidebar-logo {
+    font-size: 24px;
+    margin-bottom: 40px;
+    color: #b36bff;
+    text-shadow: 0 0 15px rgba(179,107,255,0.6);
 }
 
 .sidebar nav {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
 }
 
 .sidebar nav a {
     text-decoration: none;
     color: white;
-    opacity: 0.6;
+    opacity: 0.7;
+    padding: 10px 15px;
+    border-radius: 8px;
     transition: 0.3s ease;
-    font-size: 16px;
 }
 
 .sidebar nav a:hover {
     opacity: 1;
-    transform: translateX(6px);
+    background: rgba(179,107,255,0.15);
+    box-shadow: 0 0 20px rgba(179,107,255,0.4);
 }
 
 .sidebar nav a.active {
     opacity: 1;
+    background: rgba(179,107,255,0.25);
+    box-shadow: 0 0 25px rgba(179,107,255,0.6);
 }
 
-/* КОНТЕНТ */
+/* Контент */
 .content {
     flex: 1;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px 80px;
 }
 
-/* ЦЕНТР */
-.center-block {
+/* Центр */
+.hero {
     text-align: center;
-    margin-bottom: 40px;
 }
 
-.logo {
+.hero h1 {
     font-size: 72px;
-    letter-spacing: 6px;
-    margin-bottom: 10px;
+    margin: 0;
+    text-shadow: 0 0 30px rgba(179,107,255,0.8);
 }
 
-.subtitle {
-    font-size: 18px;
+.hero p {
+    margin-top: 15px;
     opacity: 0.7;
 }
 
-/* НИЖНЯЯ СТРОКА */
-.info-line {
-    display: flex;
-    gap: 60px;
-    opacity: 0.5;
-    font-size: 14px;
-}
