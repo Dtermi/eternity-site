@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'MinecraftCustom';
+    src: url('fonts/minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 * {
     margin: 0;
     padding: 0;
@@ -5,10 +12,7 @@
 }
 
 body {
-    font-family: 'Minecraft', sans-serif;
-    background: radial-gradient(circle at top, #1a0f2e 0%, #0f0f1a 60%);
-    color: white;
-    overflow-x: hidden;
+    font-family: 'MinecraftCustom', sans-serif;
 }
 
 /* Particles */
