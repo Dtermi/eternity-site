@@ -1,5 +1,5 @@
 /* =========================
-   RULES PAGE - PURPLE THEME
+   THE SERVER - RULES STYLE
 ========================= */
 
 * {
@@ -10,18 +10,18 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0f0f1a, #1b102f);
+    background: linear-gradient(135deg, #0f0f1a, #1a1033);
     color: #ffffff;
 }
 
 /* Заголовок */
 header {
     text-align: center;
-    padding: 40px 20px;
+    padding: 50px 20px 30px 20px;
 }
 
 header h1 {
-    font-size: 40px;
+    font-size: 42px;
     color: #a855f7;
     text-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
 }
@@ -29,51 +29,54 @@ header h1 {
 /* Контейнер */
 .rules-container {
     max-width: 900px;
-    margin: 0 auto;
+    margin: 0 auto 60px auto;
     padding: 20px;
 }
 
-/* Блок правила */
+/* Карточка правила */
 .rule-block {
-    background: rgba(30, 15, 50, 0.7);
+    background: rgba(40, 20, 70, 0.75);
     border: 1px solid #7c3aed;
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 20px;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 25px;
     transition: 0.3s ease;
     box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
 }
 
 .rule-block:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
+    transform: translateY(-6px);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
 }
 
+/* Заголовок правила */
 .rule-block h2 {
     color: #c084fc;
     margin-bottom: 10px;
+    font-size: 20px;
 }
 
+/* Текст */
 .rule-block p {
-    line-height: 1.6;
     color: #e9d5ff;
+    line-height: 1.6;
 }
 
 /* Кнопка назад */
 .back-button {
     display: inline-block;
-    margin: 40px auto;
-    padding: 12px 30px;
+    margin-top: 30px;
+    padding: 14px 35px;
     border-radius: 30px;
     background: linear-gradient(90deg, #7c3aed, #a855f7);
     color: #ffffff;
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s ease;
-    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
 }
 
 .back-button:hover {
     background: linear-gradient(90deg, #a855f7, #7c3aed);
-    box-shadow: 0 0 25px rgba(168, 85, 247, 0.9);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.9);
 }
