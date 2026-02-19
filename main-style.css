@@ -6,8 +6,8 @@
 
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at center, #141414 0%, #0a0a0a 100%);
-    color: white;
+    background: linear-gradient(135deg, #1e2a38, #25384f);
+    color: #ffffff;
     overflow-x: hidden;
 }
 
@@ -18,88 +18,86 @@ body {
     z-index: 0;
 }
 
-.overlay {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.7) 100%);
-    z-index: 1;
-}
-
-.container {
+.main-wrapper {
     position: relative;
     z-index: 2;
     text-align: center;
     padding-top: 120px;
     padding-bottom: 100px;
-    animation: fadeIn 1.5s ease forwards;
 }
 
-.logo {
+.hero {
+    margin-bottom: 60px;
+}
+
+.title {
     font-size: 64px;
-    letter-spacing: 8px;
-    text-shadow: 0 0 25px rgba(255,255,255,0.4);
-    margin-bottom: 10px;
+    letter-spacing: 6px;
+    animation: glow 4s ease-in-out infinite alternate;
 }
 
-.subtitle {
-    opacity: 0.7;
-    margin-bottom: 50px;
+.tagline {
+    margin-top: 15px;
     font-size: 18px;
+    opacity: 0.85;
 }
 
-.menu {
-    margin-bottom: 80px;
+.main-menu {
+    margin: 50px 0 80px 0;
 }
 
-.menu a {
-    display: inline-block;
-    margin: 15px 25px;
+.main-menu a {
+    margin: 0 25px;
     text-decoration: none;
-    color: white;
     font-size: 20px;
+    color: white;
     position: relative;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
-.menu a::after {
+.main-menu a::after {
     content: "";
     position: absolute;
     width: 0%;
     height: 2px;
     left: 0;
-    bottom: -5px;
-    background: white;
-    transition: 0.3s ease;
+    bottom: -6px;
+    background: #ffffff;
+    transition: 0.3s;
 }
 
-.menu a:hover {
-    opacity: 0.7;
+.main-menu a:hover {
+    transform: translateY(-3px);
+    opacity: 0.8;
 }
 
-.menu a:hover::after {
+.main-menu a:hover::after {
     width: 100%;
 }
 
-.news-section {
-    max-width: 800px;
+.news-block {
+    max-width: 900px;
     margin: 0 auto;
 }
 
-.news-section h2 {
-    margin-bottom: 20px;
-    font-weight: 400;
-    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+.news-block h2 {
+    margin-bottom: 25px;
+    font-weight: 500;
 }
 
-.telegram-widget {
-    backdrop-filter: blur(10px);
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    border-radius: 10px;
+.telegram-container {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+    to {
+        text-shadow: 0 0 25px rgba(255,255,255,0.7);
+    }
 }
