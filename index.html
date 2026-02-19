@@ -7,16 +7,22 @@
 </head>
 <body>
 
-<script>
-const modal = document.getElementById("imageModal");
-const modalImg = document.getElementById("modalImage");
-const closeBtn = document.querySelector(".close");
+<div id="imageModal" class="image-modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImg">
+</div>
 
-document.querySelectorAll(".gallery img").forEach(img => {
-    img.addEventListener("click", function() {
-        modal.style.display = "block";
+<script>
+const images = document.querySelectorAll('.gallery img');
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("modalImg");
+const closeBtn = document.querySelector(".close-modal");
+
+images.forEach(img => {
+    img.onclick = function(){
+        modal.style.display = "flex";
         modalImg.src = this.src;
-    });
+    }
 });
 
 closeBtn.onclick = function() {
@@ -24,7 +30,7 @@ closeBtn.onclick = function() {
 }
 
 modal.onclick = function(e) {
-    if (e.target === modal) {
+    if(e.target === modal) {
         modal.style.display = "none";
     }
 }
