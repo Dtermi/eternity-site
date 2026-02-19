@@ -12,9 +12,11 @@
 }
 
 body {
-    font-family: 'MinecraftCustom', sans-serif;
+    font-family: 'Minecraft', sans-serif;
+    background: radial-gradient(circle at top, #1a0f2e 0%, #0f0f1a 60%);
+    color: white;
+    overflow-x: hidden;
 }
-
 /* Particles */
 #particles-js {
     position: fixed;
