@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>ETERNITY</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>ETERNITY</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<canvas id="particles-canvas"></canvas>
+<div class="end-world">
+    <div class="fog-layer"></div>
+
+    <div class="island i1"></div>
+    <div class="island i2"></div>
+    <div class="island i3"></div>
+    <div class="island i4"></div>
+    <div class="island i5"></div>
+</div>
+
+<div class="cosmic-background">
+    <div class="layer layer1"></div>
+    <div class="layer layer2"></div>
+    <div class="layer layer3"></div>
+</div>
 
 <div class="sidebar">
     <h2>ETERNITY</h2>
@@ -22,72 +35,98 @@
 
 <div class="content">
 
-    <h1>ETERNITY — Vanilla+ сервер</h1>
+    <!-- HERO -->
+    <section class="hero">
+        <h1>ETERNITY — Vanilla+ сервер</h1>
+        <p>
+            Уникальный Minecraft сервер версии 1.21.11  
+            с переработанной рыбалкой, фермерством, кастомными механиками  
+            и живым сообществом.
+        </p>
 
-    <p>
-        Уникальный Minecraft сервер версии 1.21.11 с переработанной рыбалкой, фермерством,
-        кастомными механиками и живым сообществом.
-    </p>
-
-    <div class="card">
-        <h3>Последние новости</h3>
-
-        <p><strong>15.02.2026</strong> — Пока наш сервер закрыт на технические работы,
-        мы проводим межсезонье и готовим масштабное обновление.</p>
-
-        <p><strong>14.02.2026</strong> — День Валентина!
-        На сервере были добавлены праздничные активности и подарки.</p>
-
-        <p><strong>13.02.2026</strong> — Розыгрыш ETERNITY!
-        Следите за новостями в наших социальных сетях.</p>
-    </div>
-
-    <div class="card">
-        <h3>Мир ETERNITY</h3>
-
-        <img src="screenshot1.jpg" alt="Скриншот 1">
-        <img src="screenshot2.jpg" alt="Скриншот 2">
-        <img src="screenshot3.jpg" alt="Скриншот 3">
-        <img src="screenshot4.jpg" alt="Скриншот 4">
-    </div>
-
-</div>
-
-<script src="particles.js"></script>
-
-</body>
-</html>
-
-<!-- FEATURES -->
-<section class="features-section">
-
-    <h2>Особенности сервера</h2>
-
-    <div class="features-grid">
-
-        <div class="feature-card">
-            <h3>🎣 Переработанная рыбалка</h3>
-            <p>Новые виды рыбы, редкие уловы и уникальная экономика.</p>
+        <div class="hero-buttons">
+            <a href="https://t.me/eternityminecraft/412" target="_blank">
+                <button class="main-button">Присоединиться</button>
+            </a>
+            <a href="https://t.me/eternityminecraft" target="_blank">
+                <button class="secondary-button">Наш Telegram</button>
+            </a>
         </div>
+    </section>
 
-        <div class="feature-card">
-            <h3>🌾 Улучшенное фермерство</h3>
-            <p>Дополнительные механики выращивания и развития хозяйства.</p>
+    <!-- NEWS -->
+    <section class="news-section">
+        <h2>Последние новости</h2>
+
+        <div class="news-grid">
+
+            <div class="news-card">
+                <div class="news-date">15.02.2026</div>
+                <h3>🏝 Один Блок!</h3>
+                <p>Пока наш сервер закрыт на технические работы, мы проводим межсезонье в довольно тесной — в буквальном смысле — команде!</p>
+                <a href="https://t.me/eternewsty" target="_blank">Читать далее →</a>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">13.02.2026</div>
+                <h3>🌸 День Валентина!</h3>
+                <p>Друзья,с наступающим праздником! Пусть этот день станет лишним поводом сказать добрые слова тем, кто вам дорог. А мы хотим сделать маленькое объявление.</p>
+                <a href="https://t.me/eternewsty" target="_blank">Читать далее →</a>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">14.02.2026</div>
+                <h3>🪷 Розыгрыш!</h3>
+                <p>РОЗЫГРЫШ ETERNITY💕 в честь дня влюбленных!!</p>
+                <a href="https://t.me/eternewsty" target="_blank">Читать далее →</a>
+            </div>
+
         </div>
+    </section>
+    
+    <!-- GALLERY -->
+    <section class="gallery-section">
+        <h2>Мир ETERNITY</h2>
+        <p class="section-description">
+            Несколько кадров из жизни нашего сервера.
+        </p>
 
-        <div class="feature-card">
-            <h3>✨ Кастомные механики</h3>
-            <p>Уникальные системы, которые делают Vanilla+ глубже.</p>
+        <div class="gallery-grid">
+            <img src="2025-10-18_15.17.59.png" alt="Скриншот 1">
+            <img src="images/screen2.jpg" alt="Скриншот 2">
+            <img src="images/screen3.jpg" alt="Скриншот 3">
+            <img src="images/screen4.jpg" alt="Скриншот 4">
         </div>
+    </section>
 
-        <div class="feature-card">
-            <h3>👥 Закрытое сообщество</h3>
-            <p>Только отобранные участники формируют атмосферу проекта.</p>
+    <!-- FEATURES -->
+    <section class="features-section">
+        <h2>Особенности сервера</h2>
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <h3>🎣 Переработанная рыбалка</h3>
+                <p>Новые виды рыбы, редкие уловы и уникальная экономика.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🌾 Улучшенное фермерство</h3>
+                <p>Дополнительные механики выращивания и развития хозяйства.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>✨ Кастомные механики</h3>
+                <p>Уникальные системы, которые делают Vanilla+ глубже.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>👥 Закрытое сообщество</h3>
+                <p>Только отобранные участники формируют атмосферу проекта.</p>
+            </div>
+
         </div>
-
-    </div>
-
-</section>
+    </section>
 
 </div>
 
