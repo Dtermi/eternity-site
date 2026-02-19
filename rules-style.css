@@ -21,6 +21,9 @@
 
 body {
     font-family: 'MinecraftCustom', sans-serif !important;
+    background: radial-gradient(circle at top, #1a0f2e 0%, #0f0f1a 60%);
+    color: white;
+    overflow-x: hidden;
 }
 
 /* Particles */
