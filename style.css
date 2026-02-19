@@ -417,3 +417,63 @@ p {
     margin-bottom: 15px;
     color: #c084fc;
 }
+/* ГЛАВНАЯ */
+
+.home-page {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    padding: 80px 60px;
+}
+
+/* ЛОГОТИП */
+
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.hero-title {
+    font-size: 70px;
+    margin: 0;
+    text-shadow: 0 0 40px rgba(180,100,255,0.8);
+}
+
+.hero-subtitle {
+    margin-top: 15px;
+    opacity: 0.7;
+}
+
+/* СЕКЦИИ */
+
+.home-section h2 {
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(180,100,255,0.5);
+}
+
+/* НОВОСТИ */
+
+.news-box {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(180,100,255,0.2);
+}
+
+/* ГАЛЕРЕЯ */
+
+.gallery {
+    display: flex;
+    gap: 25px;
+}
+
+.gallery img {
+    width: 33%;
+    border-radius: 15px;
+    transition: 0.4s ease;
+    box-shadow: 0 0 30px rgba(180,100,255,0.15);
+}
+
+.gallery img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 50px rgba(180,100,255,0.4);
+}
