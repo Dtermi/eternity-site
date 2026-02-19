@@ -2,48 +2,28 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>ETERNITY | Главная</title>
+<title>ETERNITY PROJECT</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="imageModal" class="image-modal">
-    <span class="close-modal">&times;</span>
-    <img class="modal-content" id="modalImg">
+<div class="end-world">
+    <div class="fog-layer"></div>
+
+    <div class="island i1"></div>
+    <div class="island i2"></div>
+    <div class="island i3"></div>
+    <div class="island i4"></div>
+    <div class="island i5"></div>
 </div>
 
-<script>
-const images = document.querySelectorAll('.gallery img');
-const modal = document.getElementById("imageModal");
-const modalImg = document.getElementById("modalImg");
-const closeBtn = document.querySelector(".close-modal");
-
-images.forEach(img => {
-    img.onclick = function(){
-        modal.style.display = "flex";
-        modalImg.src = this.src;
-    }
-});
-
-closeBtn.onclick = function() {
-    modal.style.display = "none";
-}
-
-modal.onclick = function(e) {
-    if(e.target === modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-
-<!-- ФОН -->
 <div class="cosmic-background">
     <div class="layer layer1"></div>
     <div class="layer layer2"></div>
     <div class="layer layer3"></div>
 </div>
 
-<!-- САЙДБАР -->
+
 <div class="sidebar">
     <h2>ETERNITY</h2>
     <a href="index.html" class="active">Главная</a>
@@ -54,53 +34,12 @@ modal.onclick = function(e) {
     <a href="links.html">Ссылки</a>
 </div>
 
-<!-- ОСНОВНОЙ КОНТЕНТ -->
-<div class="content home-page">
-
-    <!-- ЛОГОТИП -->
-    <div class="hero">
-        <h1 class="hero-title">ETERNITY</h1>
-        <p class="hero-subtitle">Minecraft проект нового уровня</p>
-    </div>
-
-    <!-- НОВОСТИ -->
-    <div class="home-section">
-        <h2>Последние новости</h2>
-
-        <div class="news-box">
-                <script async src="https://telegram.org/js/telegram-widget.js?22"
-                    data-telegram-post="eternewsty/1"
-                    data-width="100%"
-                    data-userpic="false">
-                    </script>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- ГАЛЕРЕЯ -->
-    <div class="home-section">
-        <h2>Мир Eternity</h2>
-
-        <div class="gallery">
-            <img src="images/photo1.png" alt="">
-            <img src="images/photo2.png" alt="">
-            <img src="images/photo3.png" alt="">
-        </div>
-
-    </div>
+<div class="content">
 
 </div>
 
-<!-- ПАРТИКЛЫ -->
 <canvas id="particles-canvas"></canvas>
 <script src="particles.js"></script>
-
-<!-- Модальное окно -->
-<div id="imageModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImage">
-</div>
 
 </body>
 </html>
