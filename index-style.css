@@ -1,52 +1,95 @@
-/* Центровка навигационного блока */
-.center-block {
+/* HERO */
+
+.hero-clean {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+
+    animation: fadeHero 1s ease forwards;
 }
 
-/* Ссылки главного меню */
-.main-links {
+.hero-sub {
+    margin-top: 15px;
+    opacity: 0.8;
+    font-size: 18px;
+}
+
+/* МЕНЮ */
+
+.clean-nav {
+    margin-top: 50px;
     display: flex;
+    gap: 40px;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
-    margin-top: 20px;
 }
 
-.main-links a {
+.clean-nav a {
     text-decoration: none;
-    padding: 18px 35px;
-    border-radius: 50px;
-    background: linear-gradient(90deg, #7c3aed, #a855f7);
-    color: white;
     font-size: 18px;
-    box-shadow: 0 0 25px rgba(168,85,247,0.5);
+    color: white;
+    position: relative;
     transition: all 0.3s ease;
 }
 
-.main-links a:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 0 45px rgba(168,85,247,0.8);
+.clean-nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background: #a855f7;
+    transition: 0.3s ease;
 }
 
-/* Telegram блок */
-.telegram-wrapper {
-    margin-top: 30px;
+.clean-nav a:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+.clean-nav a:hover::after {
+    width: 100%;
+}
+
+/* НОВОСТИ */
+
+.news-clean {
+    max-width: 900px;
+    margin: 0 auto 120px auto;
+    text-align: center;
+}
+
+.news-clean h2 {
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.divider {
+    height: 1px;
+    width: 200px;
+    margin: 60px auto;
+    background: linear-gradient(to right, transparent, #a855f7, transparent);
+}
+
+.telegram-clean {
     border-radius: 20px;
     overflow: hidden;
 }
 
-/* Немного плавности */
-.rules-card {
-    animation: fadeUp 0.8s ease forwards;
-}
+/* АНИМАЦИЯ */
 
-@keyframes fadeUp {
+@keyframes fadeHero {
     from {
         opacity: 0;
-        transform: translateY(25px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
+
