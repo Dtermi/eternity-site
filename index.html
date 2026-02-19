@@ -2,18 +2,19 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>ETERNITY | Донат</title>
+<title>ETERNITY | Главная</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- ФОН -->
 <div class="cosmic-background">
     <div class="layer layer1"></div>
     <div class="layer layer2"></div>
     <div class="layer layer3"></div>
 </div>
 
-
+<!-- САЙДБАР -->
 <div class="sidebar">
     <h2>ETERNITY</h2>
     <a href="index.html" class="active">Главная</a>
@@ -24,14 +25,43 @@
     <a href="links.html">Ссылки</a>
 </div>
 
-<div class="content">
-    <h1>ETERNITY</h1>
+<!-- ОСНОВНОЙ КОНТЕНТ -->
+<div class="content home-page">
 
-    <p>Minecraft проект нового уровня</p>
+    <!-- ЛОГОТИП -->
+    <div class="hero">
+        <h1 class="hero-title">ETERNITY</h1>
+        <p class="hero-subtitle">Minecraft проект нового уровня</p>
+    </div>
 
-    <button class="main-button">Поддержать</button>
+    <!-- НОВОСТИ -->
+    <div class="home-section">
+        <h2>Последние новости</h2>
+
+        <div class="news-box">
+            <iframe 
+                src="https://t.me/s/eternewsty"
+                width="100%"
+                height="320"
+                frameborder="0">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- ГАЛЕРЕЯ -->
+    <div class="home-section">
+        <h2>Мир Eternity</h2>
+
+        <div class="gallery">
+            <img src="images/photo1.jpg" alt="">
+            <img src="images/photo2.jpg" alt="">
+            <img src="images/photo3.jpg" alt="">
+        </div>
+    </div>
+
 </div>
 
+<!-- ПАРТИКЛЫ -->
 <canvas id="particles-canvas"></canvas>
 <script src="particles.js"></script>
 
