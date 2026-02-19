@@ -2,44 +2,59 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Eternity</title>
+    <title>ETERNITY | Главное меню</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main-style.css">
+
+    <!-- Minecraft Font -->
+    <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+
+    <!-- Основной стиль как в rules -->
+    <link rel="stylesheet" href="rules-style.css">
+
+    <!-- Доп стиль главной -->
+    <link rel="stylesheet" href="index-style.css">
+
+    <!-- Particles -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
 
 <div id="particles-js"></div>
 
-<div class="main-wrapper">
+<header class="hero">
+    <h1 class="glow-title">ETERNITY</h1>
+    <p class="subtitle">Мир, который продолжает жить и развиваться</p>
+</header>
 
-    <header class="hero">
-        <h1 class="title">ETERNITY</h1>
-        <p class="tagline">Проект, который развивается каждый день</p>
-    </header>
+<main class="rules-wrapper">
 
-    <nav class="main-menu">
-        <a href="rules.html">Правила</a>
-        <a href="map.html">Карта</a>
-        <a href="stats.html">Статистика</a>
-        <a href="donate.html">Поддержать</a>
-    </nav>
+    <section class="rules-card reveal tilt center-block">
+        <h2>НАВИГАЦИЯ</h2>
+        <div class="main-links">
+            <a href="rules.html">Правила</a>
+            <a href="map.html">Карта мира</a>
+            <a href="stats.html">Статистика</a>
+            <a href="donate.html">Поддержать проект</a>
+            <a href="links.html">Соц. ссылки</a>
+        </div>
+    </section>
 
-    <section class="news-block">
-        <h2>Новости проекта</h2>
+    <section class="rules-card reveal tilt">
+        <h2>ПОСЛЕДНИЕ НОВОСТИ</h2>
 
-        <div class="telegram-container">
+        <div class="telegram-wrapper">
             <script async src="https://telegram.org/js/telegram-widget.js?22"
                 data-telegram-channel="eternewsty"
                 data-width="100%"
-                data-height="500"
-                data-dark="0">
+                data-height="500">
             </script>
         </div>
     </section>
 
-</div>
+</main>
 
-<script src="particles.js"></script>
+<script src="rules-particles.js"></script>
+<script src="rules-animations.js"></script>
 
 </body>
 </html>
