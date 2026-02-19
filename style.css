@@ -523,10 +523,7 @@ textarea {
 .gallery img:hover {
     transform: scale(1.05);
 }
-.gallery img {
-    width: 260px;
-    height: 180px;
-}
+
 /* Модалка */
 .modal {
     display: none;
