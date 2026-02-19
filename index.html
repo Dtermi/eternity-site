@@ -1,45 +1,41 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>ETERNITY PROJECT</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Главная | ETERNITY</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+    <link rel="stylesheet" href="layout.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="rules-particles.js"></script>
 </head>
 <body>
 
-<div class="end-world">
-    <div class="fog-layer"></div>
-
-    <div class="island i1"></div>
-    <div class="island i2"></div>
-    <div class="island i3"></div>
-    <div class="island i4"></div>
-    <div class="island i5"></div>
-</div>
-
-<div class="cosmic-background">
-    <div class="layer layer1"></div>
-    <div class="layer layer2"></div>
-    <div class="layer layer3"></div>
-</div>
-
+<div id="particles-js"></div>
 
 <div class="sidebar">
     <h2>ETERNITY</h2>
-    <a href="index.html" class="active">Главная</a>
-    <a href="rules.html">Правила</a>
-    <a href="stats.html">Статистика</a>
-    <a href="map.html">Карта</a>
-    <a href="donate.html">Донат</a>
-    <a href="links.html">Ссылки</a>
+    <a href="index.html" class="nav-link">Главная</a>
+    <a href="rules.html" class="nav-link">Правила</a>
+    <a href="map.html" class="nav-link">Карта</a>
+    <a href="stats.html" class="nav-link">Статистика</a>
+    <a href="donate.html" class="nav-link">Донат</a>
+    <a href="links.html" class="nav-link">Ссылки</a>
 </div>
 
 <div class="content">
+    <h1 class="hero-title">Добро пожаловать в ETERNITY</h1>
 
+    <div class="glass-card">
+        <p>Здесь будет обновлённый главный блок.</p>
+    </div>
+
+    <div class="glass-card">
+        <p>Добавляй любые секции в этом же стиле.</p>
+    </div>
 </div>
-
-<canvas id="particles-canvas"></canvas>
-<script src="particles.js"></script>
 
 </body>
 </html>
