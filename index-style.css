@@ -1,134 +1,29 @@
-@font-face {
-    font-family: 'MinecraftCustom';
-    src: url('fonts/minecraft.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-/* HERO */
-
-.hero-screen {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.main-title {
-    font-size: 72px;
-    margin-bottom: 15px;
-}
-
-.hero-desc {
-    font-size: 20px;
-    opacity: 0.85;
-}
-
-.status-line {
-    margin-top: 15px;
-    font-size: 14px;
-    opacity: 0.6;
-    letter-spacing: 1px;
-}
-
-/* ВЕРТИКАЛЬНОЕ МЕНЮ */
-
-.vertical-menu {
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.vertical-menu a {
-    text-decoration: none;
-    font-size: 22px;
-    color: white;
-    transition: all 0.3s ease;
-}
-
-.vertical-menu a:hover {
-    transform: translateX(8px);
-    opacity: 0.8;
-}
-
-/* ABOUT */
-
-.about-world {
-    max-width: 700px;
-    margin: 120px auto 60px auto;
-    text-align: center;
-    font-size: 18px;
-    line-height: 1.7;
-    opacity: 0.9;
-}
-
-/* РАЗДЕЛИТЕЛЬ */
-
-.glow-divider {
-    width: 200px;
-    height: 2px;
-    margin: 60px auto;
-    background: linear-gradient(to right, transparent, #a855f7, transparent);
-}
-
-/* НОВОСТИ */
-
-.news-section-clean {
-    max-width: 900px;
-    margin: 0 auto 120px auto;
-    text-align: center;
-}
-
-.news-section-clean h2 {
-    margin-bottom: 30px;
-}
-
-.telegram-embed {
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-/* ФУТЕР */
-
-.minimal-footer {
-    text-align: center;
-    padding: 40px 0;
-    opacity: 0.5;
-    font-size: 14px;
-}
 .layout {
     display: flex;
     min-height: 100vh;
 }
 
+/* ЛЕВАЯ НАВИГАЦИЯ */
 .sidebar {
-    width: 240px;
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(6px);
-    padding: 40px 20px;
-    border-right: 1px solid rgba(255,255,255,0.05);
-}
-
-.logo {
-    font-size: 22px;
-    margin-bottom: 40px;
-    letter-spacing: 2px;
+    width: 220px;
+    padding: 50px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .sidebar nav {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
 }
 
 .sidebar nav a {
-    color: white;
     text-decoration: none;
-    opacity: 0.7;
-    transition: all 0.3s ease;
+    color: white;
+    opacity: 0.6;
+    transition: 0.3s ease;
+    font-size: 16px;
 }
 
 .sidebar nav a:hover {
@@ -140,8 +35,37 @@
     opacity: 1;
 }
 
+/* КОНТЕНТ */
 .content {
     flex: 1;
-    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 80px;
 }
 
+/* ЦЕНТР */
+.center-block {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo {
+    font-size: 72px;
+    letter-spacing: 6px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 18px;
+    opacity: 0.7;
+}
+
+/* НИЖНЯЯ СТРОКА */
+.info-line {
+    display: flex;
+    gap: 60px;
+    opacity: 0.5;
+    font-size: 14px;
+}
