@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>ETERNITY</title>
+    <title>Eternity</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
@@ -15,24 +15,37 @@
 
 <div id="particles-js"></div>
 
-<section class="hero-clean">
-    <h1 class="glow-title">ETERNITY</h1>
-    <p class="hero-sub">Мир, который продолжает жить</p>
+<section class="hero-screen">
+    <h1 class="glow-title main-title">ETERNITY</h1>
+    <p class="hero-desc">Выживание нового поколения</p>
 
-    <nav class="clean-nav">
+    <div class="status-line">
+        Сервер активен • Мир развивается • Сезон I
+    </div>
+
+    <nav class="vertical-menu">
+        <a href="#">Начать путь</a>
         <a href="rules.html">Правила</a>
-        <a href="map.html">Карта</a>
+        <a href="map.html">Карта мира</a>
         <a href="stats.html">Статистика</a>
-        <a href="donate.html">Поддержать</a>
-        <a href="links.html">Ссылки</a>
+        <a href="donate.html">Поддержать проект</a>
     </nav>
 </section>
 
-<section class="news-clean">
-    <div class="divider"></div>
-    <h2>Последние новости</h2>
+<section class="about-world">
+    <p>
+        Eternity — это мир, который живёт собственной историей. 
+        Здесь важны решения игроков, экономика развивается, 
+        а каждое обновление меняет баланс сил.
+    </p>
+</section>
 
-    <div class="telegram-clean">
+<div class="glow-divider"></div>
+
+<section class="news-section-clean">
+    <h2>ПОСЛЕДНИЕ СОБЫТИЯ</h2>
+
+    <div class="telegram-embed">
         <script async src="https://telegram.org/js/telegram-widget.js?22"
             data-telegram-channel="eternewsty"
             data-width="100%"
@@ -40,6 +53,10 @@
         </script>
     </div>
 </section>
+
+<footer class="minimal-footer">
+    Eternity © 2026
+</footer>
 
 <script src="rules-particles.js"></script>
 <script src="rules-animations.js"></script>
