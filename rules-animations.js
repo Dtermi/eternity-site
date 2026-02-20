@@ -76,6 +76,7 @@ function initImageModal() {
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden', 'true');
         modalImage.setAttribute('src', '');
+        document.body.classList.remove('modal-open');
     };
 
     imageButtons.forEach(button => {
@@ -87,6 +88,7 @@ function initImageModal() {
             modalImage.setAttribute('src', imageSrc);
             modal.classList.add('open');
             modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
         });
     });
 
