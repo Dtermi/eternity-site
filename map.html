@@ -3,47 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <title>ETERNITY | Карта</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
 
-<div class="end-world">
-    <div class="fog-layer"></div>
+<div id="particles-js"></div>
 
-    <div class="island i1"></div>
-    <div class="island i2"></div>
-    <div class="island i3"></div>
-    <div class="island i4"></div>
-    <div class="island i5"></div>
-</div>
+<aside class="sidebar">
+    <h2 class="logo">ETERNITY</h2>
+    <nav class="sidebar-nav">
+        <a href="index.html" class="nav-link">Главная</a>
+        <a href="rules.html" class="nav-link">Правила</a>
+        <a href="map.html" class="nav-link active">Карта</a>
+        <a href="stats.html" class="nav-link">Статистика</a>
+        <a href="donate.html" class="nav-link">Донат</a>
+        <a href="links.html" class="nav-link">Ссылки</a>
+    </nav>
+</aside>
 
-<div class="cosmic-background">
-    <div class="layer layer1"></div>
-    <div class="layer layer2"></div>
-    <div class="layer layer3"></div>
-</div>
+<main class="content">
+    <header class="hero reveal">
+        <h1 class="glow-title">Карта мира ETERNITY</h1>
+        <p class="subtitle">Здесь будет единая интерактивная карта сервера в том же стиле, что и на главной.</p>
+    </header>
 
+    <section class="glass-card reveal">
+        <h3>Скоро будет доступно</h3>
+        <p>Подключим просмотр построек, биомов и важных точек прямо из браузера.</p>
+        <button class="main-button">Открыть карту</button>
+    </section>
+</main>
 
-<div class="sidebar">
-    <h2>ETERNITY</h2>
-    <a href="index.html">Главная</a>
-    <a href="rules.html">Правила</a>
-    <a href="stats.html">Статистика</a>
-    <a href="map.html" class="active">Карта</a>
-    <a href="donate.html">Донат</a>
-    <a href="links.html">Ссылки</a>
-</div>
-
-<div class="content">
-    <h1>Карта мира</h1>
-
-    <p>Интерактивная карта будет добавлена позже.</p>
-
-    <button class="main-button">Открыть карту</button>
-</div>
-
-<canvas id="particles-canvas"></canvas>
-<script src="particles.js"></script>
-
+<script src="rules-particles.js"></script>
+<script src="rules-animations.js"></script>
 </body>
 </html>
