@@ -18,18 +18,19 @@ body {
     color: #fff;
     overflow-x: hidden;
     opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.45s ease, transform 0.45s ease;
+    transition: opacity 0.35s ease;
 }
 
 body.page-loaded {
     opacity: 1;
-    transform: translateY(0);
 }
 
 body.page-leaving {
     opacity: 0;
-    transform: translateY(-8px);
+}
+
+body.modal-open {
+    overflow: hidden;
 }
 
 #particles-js {
@@ -224,6 +225,23 @@ body.page-leaving {
 
 
 
+.home-card {
+    border-radius: 14px;
+    border: 2px solid rgba(154, 94, 211, 0.5);
+    background: rgba(35, 20, 58, 0.82);
+    box-shadow: 0 10px 20px rgba(25, 12, 45, 0.45);
+}
+
+.home-card h3 {
+    text-shadow: 0 0 12px rgba(172, 116, 228, 0.55);
+}
+
+.feature-card {
+    border-radius: 14px;
+    background: rgba(54, 31, 87, 0.72);
+}
+
+
 .news-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -355,16 +373,17 @@ body.page-leaving {
 
 @media (max-width: 900px) {
     .sidebar {
-        position: static;
-        width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid rgba(168, 85, 247, 0.35);
+        width: 220px;
+        padding: 22px 14px;
+    }
+
+    .logo {
+        font-size: 24px;
     }
 
     .content {
-        margin-left: 0;
-        padding: 50px 18px 30px;
+        margin-left: 220px;
+        padding: 50px 16px 30px;
     }
 
     .glow-title {
