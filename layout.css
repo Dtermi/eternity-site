@@ -449,3 +449,24 @@ body.modal-open {
         right: 16px;
     }
 }
+.oldchat-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.oldchat-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(214, 165, 255, 0.7);
+    box-shadow: 0 5px 14px rgba(28, 12, 49, 0.45);
+    flex-shrink: 0;
+}
+
+.oldchat-meta {
+    font-size: 13px;
+    color: rgba(230, 206, 255, 0.85);
+    margin-bottom: 6px;
+}
