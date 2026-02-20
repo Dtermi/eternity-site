@@ -16,6 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('page-loaded');
 
     initImageModal();
+    initOldChatToggle();
 
     document.querySelectorAll('a.nav-link[href]').forEach(link => {
         link.addEventListener('click', event => {
@@ -103,5 +104,30 @@ function initImageModal() {
         if (event.key === 'Escape') {
             closeModal();
         }
+    });
+}
+
+
+function initOldChatToggle() {
+    const toggle = document.getElementById('oldChatToggle');
+    const list = document.getElementById('oldChatList');
+
+    if (!toggle || !list) {
+        return;
+    }
+
+    toggle.addEventListener('click', () => {
+        const isHidden = list.hasAttribute('hidden');
+
+        if (isHidden) {
+            list.removeAttribute('hidden');
+            toggle.textContent = 'Скрыть old chat';
+            toggle.setAttribute('aria-expanded', 'true');
+            return;
+        }
+
+        list.setAttribute('hidden', 'hidden');
+        toggle.textContent = 'Показать old chat';
+        toggle.setAttribute('aria-expanded', 'false');
     });
 }
