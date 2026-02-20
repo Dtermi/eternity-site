@@ -15,6 +15,8 @@ window.addEventListener('load', revealOnScroll);
 window.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('page-loaded');
 
+    initImageModal();
+
     document.querySelectorAll('a.nav-link[href]').forEach(link => {
         link.addEventListener('click', event => {
             const target = link.getAttribute('href');
@@ -56,5 +58,48 @@ if (tiltCards.length > 0) {
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'rotateX(0) rotateY(0) scale(1)';
         });
+    });
+}
+
+
+function initImageModal() {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
+    const imageButtons = document.querySelectorAll('.photo-tile[data-full-image]');
+
+    if (!modal || !modalImage || !modalClose || imageButtons.length === 0) {
+        return;
+    }
+
+    const closeModal = () => {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        modalImage.setAttribute('src', '');
+    };
+
+    imageButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const imageSrc = button.getAttribute('data-full-image');
+            if (!imageSrc) {
+                return;
+            }
+            modalImage.setAttribute('src', imageSrc);
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+        });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', event => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    window.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+            closeModal();
+        }
     });
 }
