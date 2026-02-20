@@ -29,7 +29,7 @@
 <main class="content">
     <header class="hero reveal">
         <h1 class="glow-title">Добро пожаловать в ETERNITY</h1>
-        <p class="subtitle">Главное меню в новом формате: информативные карточки, понятный старт и быстрые переходы по всем разделам.</p>
+        <p class="subtitle">Уютное главное меню: свежие новости, красивые фото и удобный доступ ко всем разделам проекта.</p>
     </header>
 
     <section class="glass-card reveal">
@@ -54,15 +54,60 @@
     </section>
 
     <section class="glass-card reveal">
-        <h3>Что сейчас доступно</h3>
+        <h3>Новости из Telegram</h3>
+        <div class="news-grid">
+            <article class="news-card">
+                <span class="news-tag">НОВОСТЬ #1</span>
+                <h4>Новый сезон уже скоро</h4>
+                <p>Мы готовим запуск обновлённого сезона: новые активности, улучшенный старт и больше ивентов.</p>
+                <a class="main-button" href="https://t.me/eternityminecraft" target="_blank" rel="noopener noreferrer">Читать дальше</a>
+            </article>
+            <article class="news-card">
+                <span class="news-tag">НОВОСТЬ #2</span>
+                <h4>Обновления по серверу</h4>
+                <p>Оптимизировали производительность и стабильность, чтобы играть стало ещё комфортнее даже в прайм-тайм.</p>
+                <a class="main-button" href="https://t.me/eternityminecraft" target="_blank" rel="noopener noreferrer">Читать дальше</a>
+            </article>
+            <article class="news-card">
+                <span class="news-tag">НОВОСТЬ #3</span>
+                <h4>Анонс ближайших ивентов</h4>
+                <p>В канале уже опубликованы даты и форматы новых мероприятий — от PvP до командных приключений.</p>
+                <a class="main-button" href="https://t.me/eternityminecraft" target="_blank" rel="noopener noreferrer">Читать дальше</a>
+            </article>
+        </div>
+    </section>
+
+    <section class="glass-card reveal">
+        <h3>Галерея проекта</h3>
+        <p>Нажми на фото, чтобы открыть его на весь экран.</p>
+        <div class="photo-grid">
+            <button class="photo-tile" data-full-image="images/photo1.png" aria-label="Открыть фото 1">
+                <img src="images/photo1.png" alt="Скриншот сервера 1">
+            </button>
+            <button class="photo-tile" data-full-image="images/photo2.png" aria-label="Открыть фото 2">
+                <img src="images/photo2.png" alt="Скриншот сервера 2">
+            </button>
+            <button class="photo-tile" data-full-image="images/photo3.png" aria-label="Открыть фото 3">
+                <img src="images/photo3.png" alt="Скриншот сервера 3">
+            </button>
+        </div>
+    </section>
+
+    <section class="glass-card reveal">
+        <h3>База по проекту</h3>
         <ul>
-            <li>• Левое вертикальное меню для быстрого перехода по страницам.</li>
-            <li>• Плавная анимация при навигации между разделами.</li>
-            <li>• Обновлённые карточки на главной для более удобной структуры.</li>
+            <li>• Формат сервера: дружелюбное сообщество, события и совместные проекты.</li>
+            <li>• Где следить за новостями: Telegram и другие соцсети из раздела «Ссылки».</li>
+            <li>• С чего начать: правила → карта → статистика → подключение к сообществу.</li>
         </ul>
         <a class="main-button" href="links.html">Открыть все ссылки проекта</a>
     </section>
 </main>
+
+<div class="image-modal" id="imageModal" aria-hidden="true">
+    <button class="modal-close" id="modalClose" aria-label="Закрыть изображение">✕</button>
+    <img id="modalImage" src="" alt="Увеличенное фото">
+</div>
 
 <script src="rules-particles.js"></script>
 <script src="rules-animations.js"></script>
