@@ -213,3 +213,79 @@ body {
         font-size: 14px;
     }
 }
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    box-shadow: 0 0 30px rgba(168,85,247,0.6);
+    transition: 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-menu:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px rgba(192,132,252,0.9);
+}
+
+/* Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 1s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 84px 12px 34px;
+    }
+
+    .glow-title {
+        font-size: 30px;
+        line-height: 1.2;
+    }
+
+    .subtitle {
+        font-size: 15px;
+        margin-top: 12px;
+        line-height: 1.5;
+    }
+
+    .rules-wrapper {
+        padding: 12px;
+    }
+
+    .rules-card {
+        padding: 22px;
+        margin-bottom: 20px;
+        border-radius: 16px;
+    }
+
+    .rules-card h2 {
+        font-size: 22px;
+        margin-bottom: 14px;
+    }
+
+    .rules-card li {
+        font-size: 16px;
+        margin-bottom: 12px;
+        padding-left: 24px;
+        line-height: 1.6;
+    }
+
+    .rules-card li::before {
+        font-size: 16px;
+    }
+
+    .floating-menu {
+        right: 14px;
+        bottom: 14px;
+        padding: 12px 18px;
+        font-size: 14px;
+    }
+}
