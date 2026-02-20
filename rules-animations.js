@@ -1,33 +1,60 @@
-// Reveal on scroll
 function revealOnScroll() {
-    const reveals = document.querySelectorAll(".reveal");
+    const reveals = document.querySelectorAll('.reveal');
     reveals.forEach(el => {
         const windowHeight = window.innerHeight;
         const elementTop = el.getBoundingClientRect().top;
         if (elementTop < windowHeight - 100) {
-            el.classList.add("active");
+            el.classList.add('active');
         }
     });
 }
-window.addEventListener("scroll", revealOnScroll);
 
-// 3D Tilt Effect
-document.querySelectorAll(".tilt").forEach(card => {
-    card.addEventListener("mousemove", e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
+window.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('page-loaded');
 
-        const rotateX = ((y - centerY) / 20);
-        const rotateY = ((centerX - x) / 20);
+    document.querySelectorAll('a.nav-link[href]').forEach(link => {
+        link.addEventListener('click', event => {
+            const target = link.getAttribute('href');
+            const isLocalPage = target && !target.startsWith('http') && !target.startsWith('#');
 
-        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
-    });
+            if (!isLocalPage || link.classList.contains('active')) {
+                return;
+            }
 
-    card.addEventListener("mouseleave", () => {
-        card.style.transform = "rotateX(0) rotateY(0) scale(1)";
+            event.preventDefault();
+            document.body.classList.remove('page-loaded');
+            document.body.classList.add('page-leaving');
+
+            setTimeout(() => {
+                window.location.href = target;
+            }, 320);
+        });
     });
 });
+
+// 3D Tilt Effect
+const tiltCards = document.querySelectorAll('.tilt');
+if (tiltCards.length > 0) {
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+        });
+    });
+}
