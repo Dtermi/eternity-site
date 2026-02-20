@@ -253,3 +253,191 @@ body.modal-open {
     }
 }
 
+.feature-card p {
+    font-size: 16px;
+}
+
+.main-button {
+    display: inline-block;
+    margin-top: 18px;
+    background: linear-gradient(90deg, #7c3aed, #a855f7);
+    border: 1px solid rgba(192, 132, 252, 0.6);
+    padding: 14px 24px;
+    font-family: 'MinecraftCustom', sans-serif;
+    color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.45);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.main-button:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 30px rgba(192, 132, 252, 0.7);
+}
+
+
+
+
+.social-footer {
+    margin-top: 28px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(182, 121, 245, 0.35);
+    color: #e9d5ff;
+    font-size: 16px;
+}
+
+.social-footer p {
+    display: inline;
+    margin-right: 8px;
+}
+
+.social-footer a {
+    color: #d8b4fe;
+    text-decoration: none;
+}
+
+.social-footer a:hover {
+    color: #f5d0fe;
+    text-decoration: underline;
+}
+
+.social-footer span {
+    margin: 0 8px;
+    color: rgba(233, 213, 255, 0.7);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 1000px) {
+    .feature-card {
+        grid-column: span 6;
+    }
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 220px;
+        padding: 22px 14px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .content {
+        margin-left: 220px;
+        padding: 50px 16px 30px;
+    }
+
+    .glow-title {
+        font-size: 36px;
+    }
+
+    .feature-card {
+        grid-column: span 12;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 14px 12px;
+        border-right: none;
+        border-bottom: 1px solid rgba(168, 85, 247, 0.35);
+    }
+
+    .logo {
+        margin-bottom: 12px;
+        font-size: 22px;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+    }
+
+    .sidebar-nav::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .sidebar-nav::-webkit-scrollbar-thumb {
+        background: rgba(168, 85, 247, 0.45);
+        border-radius: 999px;
+    }
+
+    .nav-link {
+        white-space: nowrap;
+        padding: 10px 12px;
+        font-size: 14px;
+        flex-shrink: 0;
+    }
+
+    .content {
+        margin-left: 0;
+        max-width: 100%;
+        padding: 24px 12px 28px;
+    }
+
+    .hero {
+        margin-bottom: 20px;
+    }
+
+    .glow-title {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+
+    .subtitle,
+    .glass-card p,
+    .glass-card li {
+        font-size: 15px;
+        line-height: 1.55;
+    }
+
+    .glass-card {
+        padding: 20px;
+        border-radius: 16px;
+        margin-bottom: 16px;
+    }
+
+    .glass-card h3 {
+        font-size: 21px;
+        margin-bottom: 12px;
+    }
+
+    .main-button {
+        width: 100%;
+        text-align: center;
+        padding: 12px 14px;
+    }
+
+    .social-footer {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .social-footer p {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 4px;
+    }
+
+    .social-footer span {
+        margin: 0 6px;
+    }
+}
