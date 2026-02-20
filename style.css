@@ -18,18 +18,19 @@ body {
     color: #fff;
     overflow-x: hidden;
     opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.45s ease, transform 0.45s ease;
+    transition: opacity 0.35s ease;
 }
 
 body.page-loaded {
     opacity: 1;
-    transform: translateY(0);
 }
 
 body.page-leaving {
     opacity: 0;
-    transform: translateY(-8px);
+}
+
+body.modal-open {
+    overflow: hidden;
 }
 
 #particles-js {
@@ -230,16 +231,17 @@ body.page-leaving {
 
 @media (max-width: 900px) {
     .sidebar {
-        position: static;
-        width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid rgba(168, 85, 247, 0.35);
+        width: 220px;
+        padding: 22px 14px;
+    }
+
+    .logo {
+        font-size: 24px;
     }
 
     .content {
-        margin-left: 0;
-        padding: 50px 18px 30px;
+        margin-left: 220px;
+        padding: 50px 16px 30px;
     }
 
     .glow-title {
@@ -250,3 +252,4 @@ body.page-leaving {
         grid-column: span 12;
     }
 }
+
