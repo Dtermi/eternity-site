@@ -279,6 +279,44 @@ body.modal-open {
     line-height: 1.6;
 }
 
+
+.oldchat-section {
+    position: relative;
+}
+
+.oldchat-toggle {
+    margin-top: 10px;
+}
+
+.oldchat-list {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.oldchat-list[hidden] {
+    display: none;
+}
+
+.oldchat-card {
+    background: rgba(61, 31, 99, 0.62);
+    border: 1px solid rgba(182, 121, 245, 0.32);
+    border-radius: 14px;
+    padding: 16px;
+}
+
+.oldchat-card h4 {
+    font-size: 18px;
+    color: #f2dbff;
+    margin-bottom: 8px;
+}
+
+.oldchat-card p {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
 .photo-grid {
     margin-top: 16px;
     display: grid;
@@ -363,6 +401,10 @@ body.modal-open {
     }
 
     .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .oldchat-list {
         grid-template-columns: 1fr;
     }
 
