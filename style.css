@@ -17,6 +17,19 @@ body {
     background: radial-gradient(circle at top, #1a0f2e 0%, #0f0f1a 60%);
     color: #fff;
     overflow-x: hidden;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+body.page-loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body.page-leaving {
+    opacity: 0;
+    transform: translateY(-8px);
 }
 
 #particles-js {
@@ -54,13 +67,29 @@ body {
 }
 
 .nav-link {
+    position: relative;
     color: #e9d5ff;
     text-decoration: none;
     padding: 14px 16px;
     border-radius: 12px;
     border: 1px solid rgba(168, 85, 247, 0.2);
     background: rgba(168, 85, 247, 0.08);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    overflow: hidden;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.15) 50%, transparent 80%);
+    transition: transform 0.5s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    transform: translateX(100%);
 }
 
 .nav-link:hover,
@@ -109,7 +138,7 @@ body {
     margin-bottom: 24px;
     backdrop-filter: blur(15px);
     box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass-card:hover {
@@ -136,6 +165,30 @@ body {
 
 .glass-card li {
     margin-bottom: 12px;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+}
+
+.feature-card {
+    grid-column: span 4;
+    padding: 24px;
+    border-radius: 20px;
+    border: 1px solid rgba(168, 85, 247, 0.32);
+    background: rgba(87, 41, 148, 0.22);
+}
+
+.feature-card h4 {
+    margin-bottom: 10px;
+    color: #e9d5ff;
+    font-size: 20px;
+}
+
+.feature-card p {
+    font-size: 16px;
 }
 
 .main-button {
@@ -169,6 +222,12 @@ body {
     transform: translateY(0);
 }
 
+@media (max-width: 1000px) {
+    .feature-card {
+        grid-column: span 6;
+    }
+}
+
 @media (max-width: 900px) {
     .sidebar {
         position: static;
@@ -185,5 +244,9 @@ body {
 
     .glow-title {
         font-size: 36px;
+    }
+
+    .feature-card {
+        grid-column: span 12;
     }
 }
