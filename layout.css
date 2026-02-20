@@ -1,211 +1,164 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/layout.css b/layout.css
-index 6aa1b59c1b03366d3b1a33635756140d6c20add9..3994e982690598e31e790cde2ab7ae2947fa9174 100644
---- a/layout.css
-+++ b/layout.css
-@@ -1,62 +1,164 @@
--/* ===== GLOBAL RESET ===== */
--    padding: 12px 15px;
--    border-radius: 10px;
--    transition: 0.3s;
--    background: rgba(255,255,255,0.03);
-+@font-face {
-+    font-family: 'MinecraftCustom';
-+    src: url('fonts/minecraft.ttf') format('truetype');
-+    font-weight: normal;
-+    font-style: normal;
-+    font-display: swap;
- }
- 
--.nav-link:hover {
--    background: rgba(125,249,255,0.15);
--    box-shadow: 0 0 15px rgba(0,255,255,0.5);
--    transform: translateX(5px);
-+* {
-+    margin: 0;
-+    padding: 0;
-+    box-sizing: border-box;
-+}
-+
-+body {
-+    font-family: 'MinecraftCustom', sans-serif !important;
-+    background: radial-gradient(circle at top, #1a0f2e 0%, #0f0f1a 60%);
-+    color: #fff;
-+    overflow-x: hidden;
-+}
-+
-+#particles-js {
-+    position: fixed;
-+    width: 100%;
-+    height: 100%;
-+    z-index: -2;
-+}
-+
-+.sidebar {
-+    position: fixed;
-+    left: 0;
-+    top: 0;
-+    width: 250px;
-+    height: 100vh;
-+    padding: 30px 20px;
-+    background: rgba(28, 14, 50, 0.85);
-+    border-right: 1px solid rgba(168, 85, 247, 0.35);
-+    backdrop-filter: blur(15px);
-+    box-shadow: 0 0 35px rgba(168, 85, 247, 0.15);
-+    z-index: 10;
-+}
-+
-+.logo {
-+    font-size: 30px;
-+    color: #c084fc;
-+    margin-bottom: 28px;
-+    letter-spacing: 2px;
-+}
-+
-+.sidebar-nav {
-+    display: flex;
-+    flex-direction: column;
-+    gap: 12px;
-+}
-+
-+.nav-link {
-+    color: #e9d5ff;
-+    text-decoration: none;
-+    padding: 14px 16px;
-+    border-radius: 12px;
-+    border: 1px solid rgba(168, 85, 247, 0.2);
-+    background: rgba(168, 85, 247, 0.08);
-+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-+}
-+
-+.nav-link:hover,
-+.nav-link.active {
-+    background: linear-gradient(90deg, rgba(124, 58, 237, 0.7), rgba(168, 85, 247, 0.7));
-+    box-shadow: 0 0 18px rgba(168, 85, 247, 0.45);
-+    transform: translateX(4px);
-+    color: #fff;
- }
- 
--/* ===== CONTENT WRAPPER ===== */
- .content {
--    margin-left: 240px;
--    padding: 60px;
-+    margin-left: 250px;
-+    padding: 90px 40px 50px;
-+    max-width: 1150px;
-+}
-+
-+.hero {
-+    margin-bottom: 34px;
-+}
-+
-+.glow-title {
-+    font-size: 52px;
-+    background: linear-gradient(90deg, #c084fc, #a855f7, #7c3aed);
-+    -webkit-background-clip: text;
-+    -webkit-text-fill-color: transparent;
-+    animation: gradientMove 6s infinite linear;
- }
- 
--.hero-title {
--    font-size: 42px;
--    margin-bottom: 20px;
--    text-shadow: 0 0 15px #00ffff;
-+@keyframes gradientMove {
-+    0% {
-+        background-position: 0%;
-+    }
-+
-+    100% {
-+        background-position: 200%;
-+    }
-+}
-+
-+.subtitle {
-+    margin-top: 16px;
-+    font-size: 18px;
-+    color: #e9d5ff;
- }
- 
- .glass-card {
--    background: rgba(255,255,255,0.05);
--    border: 1px solid rgba(255,255,255,0.08);
-+    background: rgba(40, 20, 70, 0.6);
-+    border: 1px solid rgba(168, 85, 247, 0.4);
-+    border-radius: 25px;
-+    padding: 34px;
-+    margin-bottom: 24px;
-     backdrop-filter: blur(15px);
--    padding: 30px;
--    border-radius: 20px;
--    margin-bottom: 30px;
--    transition: 0.3s ease;
-+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
-+    transition: transform 0.25s ease, box-shadow 0.25s ease;
- }
- 
- .glass-card:hover {
--    transform: translateY(-5px);
--    box-shadow: 0 0 25px rgba(0,255,255,0.3);
-+    transform: translateY(-4px);
-+    box-shadow: 0 0 40px rgba(192, 132, 252, 0.38);
-+}
-+
-+.glass-card h3 {
-+    font-size: 28px;
-+    margin-bottom: 18px;
-+    color: #c084fc;
-+}
-+
-+.glass-card p {
-+    font-size: 18px;
-+    line-height: 1.7;
-+    color: #f5ebff;
-+}
-+
-+.reveal {
-+    opacity: 0;
-+    transform: translateY(40px);
-+    transition: 1s ease;
-+}
-+
-+.reveal.active {
-+    opacity: 1;
-+    transform: translateY(0);
- }
- 
--/* ===== MOBILE ===== */
- @media (max-width: 900px) {
-     .sidebar {
--        width: 70px;
--        padding: 20px 10px;
-+        position: static;
-+        width: 100%;
-+        height: auto;
-+        border-right: none;
-+        border-bottom: 1px solid rgba(168, 85, 247, 0.35);
-     }
- 
--    .sidebar h2 {
--        display: none;
--    }
--
--    .nav-link {
--        text-align: center;
--        font-size: 12px;
--        padding: 10px 5px;
-+    .content {
-+        margin-left: 0;
-+        padding: 50px 18px 30px;
-     }
- 
--    .content {
--        margin-left: 70px;
--        padding: 30px;
-+    .glow-title {
-+        font-size: 36px;
-     }
- }
- 
-EOF
-)
+@font-face {
+    font-family: 'MinecraftCustom';
+    src: url('fonts/minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'MinecraftCustom', sans-serif !important;
+    background: radial-gradient(circle at top, #1a0f2e 0%, #0f0f1a 60%);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    padding: 30px 20px;
+    background: rgba(28, 14, 50, 0.85);
+    border-right: 1px solid rgba(168, 85, 247, 0.35);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 35px rgba(168, 85, 247, 0.15);
+    z-index: 10;
+}
+
+.logo {
+    font-size: 30px;
+    color: #c084fc;
+    margin-bottom: 28px;
+    letter-spacing: 2px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nav-link {
+    color: #e9d5ff;
+    text-decoration: none;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    background: rgba(168, 85, 247, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: linear-gradient(90deg, rgba(124, 58, 237, 0.7), rgba(168, 85, 247, 0.7));
+    box-shadow: 0 0 18px rgba(168, 85, 247, 0.45);
+    transform: translateX(4px);
+    color: #fff;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 90px 40px 50px;
+    max-width: 1150px;
+}
+
+.hero {
+    margin-bottom: 34px;
+}
+
+.glow-title {
+    font-size: 52px;
+    background: linear-gradient(90deg, #c084fc, #a855f7, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 6s infinite linear;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 200%;
+    }
+}
+
+.subtitle {
+    margin-top: 16px;
+    font-size: 18px;
+    color: #e9d5ff;
+}
+
+.glass-card {
+    background: rgba(40, 20, 70, 0.6);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    border-radius: 25px;
+    padding: 34px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 40px rgba(192, 132, 252, 0.38);
+}
+
+.glass-card h3 {
+    font-size: 28px;
+    margin-bottom: 18px;
+    color: #c084fc;
+}
+
+.glass-card p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #f5ebff;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(168, 85, 247, 0.35);
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 50px 18px 30px;
+    }
+
+    .glow-title {
+        font-size: 36px;
+    }
+}
