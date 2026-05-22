@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donate — MC Server</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0810;
+      --surface:   #110e1a;
+      --card:      #17132299;
+      --border:    #2e2440;
+      --accent:    #7c3aed;
+      --accent2:   #a855f7;
+      --glow:      #7c3aed55;
+      --text:      #e2d9f3;
+      --muted:     #7b6e9a;
+      --success:   #34d399;
+      --font-head: 'Rajdhani', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Mesh background ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 20% 20%, #3b0764 0%, transparent 60%),
+        radial-gradient(ellipse 50% 35% at 80% 80%, #1e1b4b 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Grid overlay ── */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(124,58,237,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124,58,237,.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+    /* ── Header ── */
+    header {
+      padding: 48px 0 32px;
+      text-align: center;
+    }
+
+    .logo-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: .2em;
+      color: var(--accent2);
+      background: #2e124455;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      padding: 4px 12px;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: .04em;
+      line-height: 1;
+      background: linear-gradient(135deg, #c4b5fd 0%, #7c3aed 60%, #4c1d95 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: .06em;
+    }
+
+    /* ── Step indicator ── */
+    .steps {
+      display: flex;
+      gap: 0;
+      margin: 40px 0 32px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .step {
+      flex: 1;
+      padding: 12px 8px;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      transition: .3s;
+      position: relative;
+    }
+
+    .step.active {
+      color: var(--accent2);
+      background: #2e12441a;
+    }
+
+    .step.done {
+      color: var(--success);
+    }
+
+    .step span {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(8px);
+      transition: border-color .3s;
+    }
+
+    .card:hover { border-color: #4a3568; }
+
+    .card-title {
+      font-family: var(--font-head);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    /* ── Input ── */
+    label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      background: #0d0b15;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 15px;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--glow);
+    }
+
+    input[type="text"]::placeholder { color: #3d3356; }
+
+    /* ── Privilege cards ── */
+    .priv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .priv-card {
+      background: #0d0b15;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 16px;
+      cursor: pointer;
+      transition: .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .priv-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .priv-card.vip::before   { background: linear-gradient(135deg, #7c3aed11, #4c1d9511); }
+    .priv-card.prem::before  { background: linear-gradient(135deg, #f59e0b11, #92400e11); }
+
+    .priv-card:hover, .priv-card.selected {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--glow);
+    }
+
+    .priv-card.selected::before { opacity: 1; }
+
+    .priv-card.prem:hover,
+    .priv-card.prem.selected {
+      border-color: #f59e0b;
+      box-shadow: 0 8px 24px #f59e0b33;
+    }
+
+    .priv-name {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      margin-bottom: 8px;
+    }
+
+    .priv-card.vip  .priv-name { color: #a78bfa; }
+    .priv-card.prem .priv-name { color: #fbbf24; }
+
+    .priv-price {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .priv-features {
+      list-style: none;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .priv-features li::before { content: '›  '; color: var(--accent2); }
+
+    .selected-check {
+      position: absolute;
+      top: 10px; right: 12px;
+      width: 20px; height: 20px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+
+    .priv-card.selected .selected-check { display: flex; }
+
+    /* ── Duration ── */
+    .dur-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .dur-btn {
+      flex: 1;
+      min-width: 80px;
+      background: #0d0b15;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      padding: 10px 6px;
+      cursor: pointer;
+      text-align: center;
+      transition: .2s;
+    }
+
+    .dur-btn:hover { border-color: var(--accent); color: var(--text); }
+
+    .dur-btn.selected {
+      border-color: var(--accent);
+      color: var(--accent2);
+      background: #2e124422;
+      box-shadow: 0 0 12px var(--glow);
+    }
+
+    .dur-btn .days { font-family: var(--font-head); font-size: 20px; font-weight: 700; display: block; color: inherit; }
+
+    /* ── Summary ── */
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .summary-row:last-child { border-bottom: none; }
+    .summary-row .key { color: var(--muted); }
+    .summary-row .val { color: var(--text); font-weight: 600; }
+    .summary-row .price { color: var(--accent2); font-family: var(--font-head); font-size: 22px; font-weight: 700; }
+
+    /* ── Button ── */
+    .btn-pay {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      padding: 16px;
+      background: linear-gradient(135deg, #7c3aed, #6d28d9);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: .2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-pay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+      opacity: 0;
+      transition: opacity .2s;
+    }
+
+    .btn-pay:hover::after { opacity: 1; }
+    .btn-pay:hover { transform: translateY(-1px); box-shadow: 0 8px 32px var(--glow); }
+    .btn-pay:active { transform: translateY(0); }
+    .btn-pay span { position: relative; z-index: 1; }
+    .btn-pay:disabled { opacity: .4; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    /* ── Error / notice ── */
+    .notice {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 12px;
+      letter-spacing: .04em;
+    }
+
+    .err-msg {
+      display: none;
+      color: #f87171;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: #00000099;
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: 16px;
+      padding: 40px 32px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 60px var(--glow);
+      animation: popIn .3s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(.92); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
+    .modal-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .modal h2 {
+      font-family: var(--font-head);
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 10px;
+    }
+
+    .modal p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .modal .btn-pay { margin-top: 0; }
+
+    @media (max-width: 520px) {
+      .priv-grid { grid-template-columns: 1fr; }
+      .dur-row .dur-btn { flex: none; width: calc(50% - 5px); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="logo-badge">⬡ MC Shop</div>
+    <h1>ПРИВИЛЕГИИ</h1>
+    <p>автоматическая выдача · защищённая оплата · luckperms</p>
+  </header>
+
+  <!-- Step indicator -->
+  <div class="steps">
+    <div class="step active" id="s1"><span>01</span>Данные</div>
+    <div class="step" id="s2"><span>02</span>Привилегия</div>
+    <div class="step" id="s3"><span>03</span>Срок</div>
+    <div class="step" id="s4"><span>04</span>Оплата</div>
+  </div>
+
+  <!-- Step 1: Ник -->
+  <div class="card" id="block-nick">
+    <div class="card-title">Ваш ник в Minecraft</div>
+    <label for="nick">Nickname</label>
+    <input type="text" id="nick" placeholder="Steve" maxlength="16" autocomplete="off" />
+    <div class="err-msg" id="nick-err">Введите корректный ник (3–16 символов)</div>
+  </div>
+
+  <!-- Step 2: Привилегия -->
+  <div class="card" id="block-priv">
+    <div class="card-title">Выберите привилегию</div>
+    <div class="priv-grid">
+
+      <div class="priv-card vip" data-priv="vip" data-base="149" onclick="selectPriv(this)">
+        <div class="selected-check">✓</div>
+        <div class="priv-name">VIP</div>
+        <div class="priv-price">от 149 ₽ / 30 дней</div>
+        <ul class="priv-features">
+          <li>Цветной ник</li>
+          <li>Приоритетный вход</li>
+          <li>Кит раз в 3 дня</li>
+          <li>/nick, /hat</li>
+        </ul>
+      </div>
+
+      <div class="priv-card prem" data-priv="premium" data-base="299" onclick="selectPriv(this)">
+        <div class="selected-check">✓</div>
+        <div class="priv-name">PREMIUM</div>
+        <div class="priv-price">от 299 ₽ / 30 дней</div>
+        <ul class="priv-features">
+          <li>Всё из VIP</li>
+          <li>Полёт в лобби</li>
+          <li>Кит раз в день</li>
+          <li>/fly, /feed, /god</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Step 3: Срок -->
+  <div class="card" id="block-dur">
+    <div class="card-title">Срок действия</div>
+    <div class="dur-row">
+      <div class="dur-btn" data-days="30" data-mult="1.0" onclick="selectDur(this)">
+        <span class="days">30</span>дней
+      </div>
+      <div class="dur-btn" data-days="60" data-mult="1.8" onclick="selectDur(this)">
+        <span class="days">60</span>дней
+      </div>
+      <div class="dur-btn" data-days="90" data-mult="2.5" onclick="selectDur(this)">
+        <span class="days">90</span>дней
+      </div>
+      <div class="dur-btn" data-days="180" data-mult="4.5" onclick="selectDur(this)">
+        <span class="days">180</span>дней
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4: Итог + оплата -->
+  <div class="card" id="block-pay">
+    <div class="card-title">Итог заказа</div>
+    <div class="summary-row">
+      <span class="key">Ник</span>
+      <span class="val" id="sum-nick">—</span>
+    </div>
+    <div class="summary-row">
+      <span class="key">Привилегия</span>
+      <span class="val" id="sum-priv">—</span>
+    </div>
+    <div class="summary-row">
+      <span class="key">Срок</span>
+      <span class="val" id="sum-dur">—</span>
+    </div>
+    <div class="summary-row">
+      <span class="key">Итого</span>
+      <span class="price" id="sum-price">— ₽</span>
+    </div>
+    <button class="btn-pay" id="btn-pay" onclick="pay()" disabled>
+      <span>Оплатить через DonationAlerts</span>
+    </button>
+    <p class="notice">🔒 Привилегия выдаётся автоматически после подтверждения платежа</p>
+  </div>
+</div>
+
+<!-- Modal success -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-icon">✦</div>
+    <h2>Переход к оплате</h2>
+    <p id="modal-text">Вы будете перенаправлены на страницу оплаты.<br>После успешного платежа привилегия выдастся автоматически.</p>
+    <button class="btn-pay" onclick="doRedirect()"><span>Продолжить →</span></button>
+  </div>
+</div>
+
+<script>
+  let selPriv = null, selDays = null, selMult = null, selBase = null;
+  let payUrl = '';
+
+  // Ник — обновить summary на ввод
+  document.getElementById('nick').addEventListener('input', updateSummary);
+
+  function selectPriv(el) {
+    document.querySelectorAll('.priv-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    selPriv = el.dataset.priv;
+    selBase = parseInt(el.dataset.base);
+    markStep('s2');
+    updateSummary();
+  }
+
+  function selectDur(el) {
+    document.querySelectorAll('.dur-btn').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    selDays = parseInt(el.dataset.days);
+    selMult = parseFloat(el.dataset.mult);
+    markStep('s3');
+    updateSummary();
+  }
+
+  function markStep(id) {
+    const order = ['s1','s2','s3','s4'];
+    const idx = order.indexOf(id);
+    order.forEach((s,i) => {
+      const el = document.getElementById(s);
+      el.classList.remove('active','done');
+      if (i < idx) el.classList.add('done');
+      else if (i === idx) el.classList.add('active');
+    });
+  }
+
+  function updateSummary() {
+    const nick = document.getElementById('nick').value.trim();
+    document.getElementById('sum-nick').textContent = nick || '—';
+    document.getElementById('sum-priv').textContent = selPriv
+      ? selPriv.charAt(0).toUpperCase() + selPriv.slice(1) : '—';
+    document.getElementById('sum-dur').textContent  = selDays ? selDays + ' дней' : '—';
+
+    if (selBase && selMult) {
+      const price = Math.round(selBase * selMult);
+      document.getElementById('sum-price').textContent = price + ' ₽';
+    }
+
+    const valid = nick.length >= 3 && nick.length <= 16
+                  && /^[a-zA-Z0-9_]+$/.test(nick)
+                  && selPriv && selDays;
+
+    document.getElementById('btn-pay').disabled = !valid;
+    if (valid) markStep('s4');
+  }
+
+  function pay() {
+    const nick = document.getElementById('nick').value.trim();
+    if (!nick || !selPriv || !selDays) return;
+
+    const price = Math.round(selBase * selMult);
+    // Формируем comment для DonationAlerts, чтобы webhook мог распознать заказ
+    const comment = `MC:${nick}:${selPriv}:${selDays}d`;
+
+    // DonationAlerts URL — замените YOUR_DA_USER на ваш username
+    payUrl = `https://www.donationalerts.com/r/YOUR_DA_USER`
+           + `?comment=${encodeURIComponent(comment)}`
+           + `&sum=${price}`;
+
+    document.getElementById('modal-text').innerHTML =
+      `Ник: <b style="color:var(--accent2)">${nick}</b> · `
+      + `<b style="color:var(--accent2)">${selPriv.toUpperCase()}</b> · `
+      + `<b style="color:var(--accent2)">${selDays} дней</b><br>`
+      + `Сумма: <b style="color:var(--accent2)">${price} ₽</b><br><br>`
+      + `После оплаты привилегия выдастся автоматически.`;
+
+    document.getElementById('modal').classList.add('open');
+  }
+
+  function doRedirect() {
+    document.getElementById('modal').classList.remove('open');
+    window.open(payUrl, '_blank');
+  }
+
+  // Close modal on overlay click
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('open');
+  });
+</script>
+</body>
+</html>
