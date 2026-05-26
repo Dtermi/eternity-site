@@ -1,636 +1,539 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Donate — MC Server</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ETERNITY — Магазин</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Black+Han+Sans&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#06050d;
+  --s1:#0c0a18;
+  --card:#120f1e;
+  --card2:#181428;
+  --border:#1e1a30;
+  --border2:#2d2748;
+  --acc:#7c3aed;
+  --acc3:#a855f7;
+  --acc4:#c084fc;
+  --txt:#d4cfe8;
+  --txt2:#857fa8;
+  --txt3:#4a4568;
+  --green2:#22c55e;
+  --fi:'Inter',sans-serif;
+  --fh:'Cormorant Garamond',serif;
+  --ft:'Black Han Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--fi);font-size:14px;min-height:100vh;overflow-x:hidden}
 
-    :root {
-      --bg:        #0a0810;
-      --surface:   #110e1a;
-      --card:      #17132299;
-      --border:    #2e2440;
-      --accent:    #7c3aed;
-      --accent2:   #a855f7;
-      --glow:      #7c3aed55;
-      --text:      #e2d9f3;
-      --muted:     #7b6e9a;
-      --success:   #34d399;
-      --font-head: 'Rajdhani', sans-serif;
-      --font-mono: 'DM Mono', monospace;
-    }
+.orbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.16}
+.orb1{width:600px;height:600px;background:radial-gradient(#4c1d95,transparent);top:-150px;left:-150px;animation:d1 20s ease-in-out infinite}
+.orb2{width:400px;height:400px;background:radial-gradient(#3b0764,transparent);bottom:-100px;right:-80px;animation:d2 25s ease-in-out infinite}
+.orb3{width:280px;height:280px;background:radial-gradient(#6d28d9,transparent);top:45%;left:55%;animation:d3 16s ease-in-out infinite}
+@keyframes d1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,35px)}}
+@keyframes d2{0%,100%{transform:translate(0,0)}50%{transform:translate(-35px,-50px)}}
+@keyframes d3{0%,100%{transform:translate(0,0)}50%{transform:translate(25px,-30px)}}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");background-size:200px;opacity:.025;pointer-events:none;z-index:0}
 
-    html { scroll-behavior: smooth; }
+.wrap{position:relative;z-index:1}
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-mono);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:100;background:rgba(6,5,13,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 28px;height:58px;display:flex;align-items:center}
+.nav-logo{font-family:var(--ft);font-size:20px;color:#fff;letter-spacing:.12em;text-shadow:0 0 20px #a855f760;cursor:default;text-transform:uppercase}
+.nav-links{display:flex;gap:2px;margin-left:36px;flex:1}
+.nav-a{padding:6px 14px;border-radius:5px;font-size:13px;font-weight:500;color:var(--txt2);cursor:default;transition:.15s}
+.nav-a:hover{color:var(--txt);background:#ffffff07}
+.nav-a.on{color:var(--acc4);background:#7c3aed15}
+.nav-right{margin-left:auto}
+.nav-help{
+  display:flex;align-items:center;gap:7px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:6px;padding:7px 14px;
+  font-size:13px;color:var(--txt2);
+  cursor:default;transition:.15s
+}
+.nav-help:hover{border-color:var(--border2);color:var(--txt)}
 
-    /* ── Mesh background ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background:
-        radial-gradient(ellipse 60% 40% at 20% 20%, #3b0764 0%, transparent 60%),
-        radial-gradient(ellipse 50% 35% at 80% 80%, #1e1b4b 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
+/* ── HERO ── */
+.hero{padding:80px 28px 68px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 50% 0%,#3b076430 0%,transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:600px;margin:0 auto}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc4);margin-bottom:20px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:22px;height:1px;background:var(--acc3);opacity:.45}
+.hero h1{font-family:var(--ft);font-size:clamp(3.5rem,10vw,7rem);color:#fff;line-height:1;margin-bottom:10px;text-shadow:0 0 80px #7c3aed70,0 0 160px #7c3aed30;letter-spacing:.1em;text-transform:uppercase}
+.hero-sub{font-family:var(--fh);font-size:15px;letter-spacing:.18em;color:var(--txt3);text-transform:uppercase;margin-bottom:22px}
+.hero-desc{font-size:14px;color:var(--txt2);line-height:1.7;max-width:440px;margin:0 auto}
 
-    /* ── Grid overlay ── */
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      background-image:
-        linear-gradient(rgba(124,58,237,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(124,58,237,.04) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
-      z-index: 0;
-    }
+/* ── LAYOUT ── */
+.layout{max-width:1160px;margin:0 auto;padding:40px 28px 60px;display:grid;grid-template-columns:1fr 310px;gap:24px;align-items:start}
 
-    .wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 0 20px; }
+/* ── SECTION HEADER ── */
+.sh{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.sh h2{font-family:var(--fh);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--txt3);white-space:nowrap}
+.sh::after{content:'';flex:1;height:1px;background:var(--border)}
 
-    /* ── Header ── */
-    header {
-      padding: 48px 0 32px;
-      text-align: center;
-    }
+/* ── RANK CARDS GRID ── */
+.rank-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
 
-    .logo-badge {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: .2em;
-      color: var(--accent2);
-      background: #2e124455;
-      border: 1px solid var(--accent);
-      border-radius: 4px;
-      padding: 4px 12px;
-      margin-bottom: 18px;
-      text-transform: uppercase;
-    }
+.rcard{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  cursor:pointer;
+  transition:border-color .2s,transform .2s,box-shadow .2s;
+  overflow:hidden;
+  position:relative;
+  display:flex;flex-direction:column
+}
+.rcard:hover{transform:translateY(-4px)}
 
-    h1 {
-      font-family: var(--font-head);
-      font-size: clamp(2.4rem, 6vw, 4rem);
-      font-weight: 700;
-      letter-spacing: .04em;
-      line-height: 1;
-      background: linear-gradient(135deg, #c4b5fd 0%, #7c3aed 60%, #4c1d95 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 12px;
-    }
+/* per-rank accent colours */
+.rcard.sponsor  {--rc:#6366f1;--rcl:#818cf8;--rcdim:#6366f115;--rcgold:false}
+.rcard.elite    {--rc:#7c3aed;--rcl:#a855f7;--rcdim:#7c3aed15}
+.rcard.head     {--rc:#0ea5e9;--rcl:#38bdf8;--rcdim:#0ea5e915}
+.rcard.hero     {--rc:#f59e0b;--rcl:#fbbf24;--rcdim:#f59e0b15}
 
-    header p {
-      font-size: 13px;
-      color: var(--muted);
-      letter-spacing: .06em;
-    }
+.rcard:hover,.rcard.sel{border-color:var(--rc)!important}
+.rcard.sel{box-shadow:0 0 0 1px var(--rc),0 16px 40px color-mix(in srgb,var(--rc) 20%,transparent)}
 
-    /* ── Step indicator ── */
-    .steps {
-      display: flex;
-      gap: 0;
-      margin: 40px 0 32px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-    }
+.rc-strip{height:3px;background:linear-gradient(90deg,var(--rc),var(--rcl));flex-shrink:0}
 
-    .step {
-      flex: 1;
-      padding: 12px 8px;
-      text-align: center;
-      font-size: 11px;
-      letter-spacing: .1em;
-      color: var(--muted);
-      text-transform: uppercase;
-      transition: .3s;
-      position: relative;
-    }
+/* image placeholder */
+.rc-img{
+  width:100%;aspect-ratio:1/1;
+  background:linear-gradient(160deg,var(--rcdim),#0c0a1800);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;letter-spacing:.1em;color:var(--txt3);
+  text-transform:uppercase;position:relative;overflow:hidden
+}
+.rc-img::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 80%,color-mix(in srgb,var(--rc) 18%,transparent),transparent);
+}
 
-    .step.active {
-      color: var(--accent2);
-      background: #2e12441a;
-    }
+.rc-body{padding:14px 14px 16px;flex:1;display:flex;flex-direction:column}
+.rc-tag{
+  display:inline-block;font-size:9px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;padding:3px 8px;border-radius:3px;
+  background:var(--rcdim);color:var(--rcl);margin-bottom:10px;
+  border:1px solid color-mix(in srgb,var(--rc) 30%,transparent)
+}
+.rc-name{
+  font-family:var(--fh);font-size:20px;font-weight:700;
+  color:var(--rcl);margin-bottom:2px;letter-spacing:.04em
+}
+.rc-price{font-family:var(--fh);font-size:16px;color:#fff;font-weight:600}
+.rc-price em{font-style:normal;font-size:11px;color:var(--txt3);font-weight:400;font-family:var(--fi)}
 
-    .step.done {
-      color: var(--success);
-    }
+/* tick */
+.rc-tick{
+  position:absolute;top:10px;right:10px;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--rc);color:#fff;font-size:9px;font-weight:700;
+  display:none;align-items:center;justify-content:center
+}
+.rcard.sel .rc-tick{display:flex}
 
-    .step span {
-      display: block;
-      font-family: var(--font-head);
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
+/* ── HOVER TOOLTIP (abilities) ── */
+.rc-tooltip{
+  position:absolute;inset:0;
+  background:color-mix(in srgb,var(--bg) 92%,var(--rc) 8%);
+  border-radius:12px;
+  padding:16px;
+  display:flex;flex-direction:column;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .2s;
+  z-index:10
+}
+.rcard:hover .rc-tooltip{opacity:1;pointer-events:auto}
+.tooltip-title{
+  font-family:var(--fh);font-size:13px;font-weight:700;
+  color:var(--rcl);letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:12px;padding-bottom:10px;
+  border-bottom:1px solid var(--border2)
+}
+.tooltip-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+.tooltip-list li{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:12px;color:var(--txt2);line-height:1.4
+}
+.tooltip-list li::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--rcl);flex-shrink:0;margin-top:4px
+}
+.tooltip-select{
+  margin-top:14px;padding:9px;border-radius:6px;
+  background:var(--rc);border:none;color:#fff;
+  font-family:var(--fi);font-size:12px;font-weight:600;
+  cursor:pointer;transition:.15s;letter-spacing:.04em
+}
+.tooltip-select:hover{opacity:.85}
 
-    /* ── Cards ── */
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      margin-bottom: 16px;
-      backdrop-filter: blur(8px);
-      transition: border-color .3s;
-    }
+/* ── DURATION ── */
+.dgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:32px}
+.dbtn{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:8px;padding:14px 6px;text-align:center;
+  cursor:pointer;transition:.15s;position:relative
+}
+.dbtn:hover{border-color:var(--border2)}
+.dbtn.on{border-color:var(--acc3)!important;background:#1a1335;box-shadow:inset 0 0 0 1px var(--acc)}
+.dnum{font-family:var(--fh);font-size:24px;font-weight:700;color:var(--txt);display:block;margin-bottom:2px}
+.dlabel{font-size:11px;color:var(--txt3)}
+.dsave{
+  position:absolute;top:-7px;right:6px;
+  font-size:9px;font-weight:700;letter-spacing:.05em;
+  background:var(--green2);color:#000;padding:2px 5px;border-radius:3px;display:none
+}
+.dbtn.hs .dsave{display:block}
 
-    .card:hover { border-color: #4a3568; }
+/* ── NICK ── */
+.flabel{display:block;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3);margin-bottom:8px}
+.ninput{
+  width:100%;background:var(--s1);border:1px solid var(--border);
+  border-radius:8px;color:var(--txt);font-family:var(--fi);
+  font-size:14px;padding:12px 14px;outline:none;transition:.15s
+}
+.ninput:focus{border-color:var(--acc3);box-shadow:0 0 0 3px #7c3aed18}
+.ninput::placeholder{color:var(--txt3)}
 
-    .card-title {
-      font-family: var(--font-head);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
+/* ── SIDEBAR ── */
+.sidebar{position:sticky;top:70px;display:flex;flex-direction:column;gap:14px}
+.scard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.scard-head{padding:13px 18px;border-bottom:1px solid var(--border);font-family:var(--fh);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--txt3)}
+.scard-body{padding:18px}
+.srow{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
+.srow:last-of-type{border-bottom:none}
+.srow .k{color:var(--txt3)}
+.srow .v{color:var(--txt);font-weight:500}
+.sempty{font-size:13px;color:var(--txt3);text-align:center;padding:4px 0 8px}
+.price-block{display:flex;justify-content:space-between;align-items:baseline;padding-top:14px;margin-top:10px;border-top:1px solid var(--border2)}
+.price-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--txt3)}
+.price-num{font-family:var(--fh);font-size:30px;font-weight:700;color:#fff}
 
-    /* ── Input ── */
-    label {
-      display: block;
-      font-size: 11px;
-      letter-spacing: .1em;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
+.paybtn{
+  display:block;width:100%;margin-top:14px;padding:14px;
+  background:linear-gradient(135deg,var(--acc),#5b21b6);
+  border:none;border-radius:8px;color:#fff;
+  font-family:var(--fh);font-size:14px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:.2s
+}
+.paybtn:hover:not(:disabled){background:linear-gradient(135deg,var(--acc3),var(--acc));transform:translateY(-1px);box-shadow:0 8px 24px #7c3aed35}
+.paybtn:disabled{opacity:.3;cursor:not-allowed}
 
-    input[type="text"] {
-      width: 100%;
-      background: #0d0b15;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text);
-      font-family: var(--font-mono);
-      font-size: 15px;
-      padding: 12px 16px;
-      outline: none;
-      transition: border-color .2s, box-shadow .2s;
-    }
+.trust-rows{padding:14px 18px;display:flex;flex-direction:column;gap:9px}
+.trow{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--txt3)}
+.ticon{width:19px;height:19px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;font-weight:700}
+.tg{background:#14532d;color:var(--green2)}
+.tp{background:#2e1a5c;color:var(--acc4)}
 
-    input[type="text"]:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--glow);
-    }
+/* ── MODAL ── */
+.modal-bg{position:fixed;inset:0;background:#00000090;backdrop-filter:blur(8px);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-bg.open{display:flex}
+.modal{background:linear-gradient(160deg,#1a1630,#110e1f);border:1px solid var(--border2);border-radius:16px;padding:38px 30px;max-width:420px;width:100%;box-shadow:0 40px 80px #00000080,0 0 0 1px #7c3aed20;animation:mpop .25s cubic-bezier(.34,1.56,.64,1)}
+@keyframes mpop{from{transform:scale(.93) translateY(10px);opacity:0}to{transform:none;opacity:1}}
+.modal-icon{width:50px;height:50px;background:linear-gradient(135deg,#3b0764,#1e1b4b);border:1px solid #7c3aed40;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
+.modal h2{font-family:var(--fh);font-size:18px;font-weight:700;letter-spacing:.06em;color:#fff;margin-bottom:8px}
+.modal p{font-size:13px;color:var(--txt2);line-height:1.7;margin-bottom:22px}
+.modal-btns{display:flex;gap:10px}
+.mbtn-c{flex:1;background:var(--s1);border:1px solid var(--border);border-radius:7px;color:var(--txt2);font-family:var(--fi);font-size:13px;padding:12px;cursor:pointer;transition:.15s}
+.mbtn-c:hover{border-color:var(--border2);color:var(--txt)}
+.mbtn-g{flex:2;background:linear-gradient(135deg,var(--acc),#5b21b6);border:none;border-radius:7px;color:#fff;font-family:var(--fh);font-size:13px;font-weight:700;letter-spacing:.06em;padding:12px;cursor:pointer;transition:.15s}
+.mbtn-g:hover{opacity:.9;transform:translateY(-1px)}
 
-    input[type="text"]::placeholder { color: #3d3356; }
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--card2);border:1px solid var(--border2);border-radius:7px;padding:9px 18px;font-size:13px;color:var(--txt);white-space:nowrap;z-index:300;transition:.3s ease}
+.toast.show{transform:translateX(-50%) translateY(0)}
 
-    /* ── Privilege cards ── */
-    .priv-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+.footer{border-top:1px solid var(--border);padding:28px;text-align:center;font-size:12px;color:var(--txt3)}
+.footer a{color:var(--acc4);text-decoration:none}
 
-    .priv-card {
-      background: #0d0b15;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px 16px;
-      cursor: pointer;
-      transition: .2s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .priv-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity .3s;
-    }
-
-    .priv-card.vip::before   { background: linear-gradient(135deg, #7c3aed11, #4c1d9511); }
-    .priv-card.prem::before  { background: linear-gradient(135deg, #f59e0b11, #92400e11); }
-
-    .priv-card:hover, .priv-card.selected {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px var(--glow);
-    }
-
-    .priv-card.selected::before { opacity: 1; }
-
-    .priv-card.prem:hover,
-    .priv-card.prem.selected {
-      border-color: #f59e0b;
-      box-shadow: 0 8px 24px #f59e0b33;
-    }
-
-    .priv-name {
-      font-family: var(--font-head);
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: .06em;
-      margin-bottom: 8px;
-    }
-
-    .priv-card.vip  .priv-name { color: #a78bfa; }
-    .priv-card.prem .priv-name { color: #fbbf24; }
-
-    .priv-price {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .priv-features {
-      list-style: none;
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .priv-features li::before { content: '›  '; color: var(--accent2); }
-
-    .selected-check {
-      position: absolute;
-      top: 10px; right: 12px;
-      width: 20px; height: 20px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-    }
-
-    .priv-card.selected .selected-check { display: flex; }
-
-    /* ── Duration ── */
-    .dur-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .dur-btn {
-      flex: 1;
-      min-width: 80px;
-      background: #0d0b15;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--muted);
-      font-family: var(--font-mono);
-      font-size: 13px;
-      padding: 10px 6px;
-      cursor: pointer;
-      text-align: center;
-      transition: .2s;
-    }
-
-    .dur-btn:hover { border-color: var(--accent); color: var(--text); }
-
-    .dur-btn.selected {
-      border-color: var(--accent);
-      color: var(--accent2);
-      background: #2e124422;
-      box-shadow: 0 0 12px var(--glow);
-    }
-
-    .dur-btn .days { font-family: var(--font-head); font-size: 20px; font-weight: 700; display: block; color: inherit; }
-
-    /* ── Summary ── */
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 13px;
-    }
-
-    .summary-row:last-child { border-bottom: none; }
-    .summary-row .key { color: var(--muted); }
-    .summary-row .val { color: var(--text); font-weight: 600; }
-    .summary-row .price { color: var(--accent2); font-family: var(--font-head); font-size: 22px; font-weight: 700; }
-
-    /* ── Button ── */
-    .btn-pay {
-      display: block;
-      width: 100%;
-      margin-top: 20px;
-      padding: 16px;
-      background: linear-gradient(135deg, #7c3aed, #6d28d9);
-      border: none;
-      border-radius: 8px;
-      color: #fff;
-      font-family: var(--font-head);
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: .2s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-pay::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #a855f7, #7c3aed);
-      opacity: 0;
-      transition: opacity .2s;
-    }
-
-    .btn-pay:hover::after { opacity: 1; }
-    .btn-pay:hover { transform: translateY(-1px); box-shadow: 0 8px 32px var(--glow); }
-    .btn-pay:active { transform: translateY(0); }
-    .btn-pay span { position: relative; z-index: 1; }
-    .btn-pay:disabled { opacity: .4; cursor: not-allowed; transform: none; box-shadow: none; }
-
-    /* ── Error / notice ── */
-    .notice {
-      font-size: 12px;
-      color: var(--muted);
-      text-align: center;
-      margin-top: 12px;
-      letter-spacing: .04em;
-    }
-
-    .err-msg {
-      display: none;
-      color: #f87171;
-      font-size: 12px;
-      margin-top: 6px;
-    }
-
-    /* ── Modal ── */
-    .modal-overlay {
-      position: fixed; inset: 0;
-      background: #00000099;
-      backdrop-filter: blur(6px);
-      z-index: 100;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-overlay.open { display: flex; }
-
-    .modal {
-      background: var(--surface);
-      border: 1px solid var(--accent);
-      border-radius: 16px;
-      padding: 40px 32px;
-      max-width: 420px;
-      width: 90%;
-      text-align: center;
-      box-shadow: 0 0 60px var(--glow);
-      animation: popIn .3s ease;
-    }
-
-    @keyframes popIn {
-      from { transform: scale(.92); opacity: 0; }
-      to   { transform: scale(1);   opacity: 1; }
-    }
-
-    .modal-icon {
-      font-size: 48px;
-      margin-bottom: 16px;
-    }
-
-    .modal h2 {
-      font-family: var(--font-head);
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: .04em;
-      margin-bottom: 10px;
-    }
-
-    .modal p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-
-    .modal .btn-pay { margin-top: 0; }
-
-    @media (max-width: 520px) {
-      .priv-grid { grid-template-columns: 1fr; }
-      .dur-row .dur-btn { flex: none; width: calc(50% - 5px); }
-    }
-  </style>
+@media(max-width:960px){.layout{grid-template-columns:1fr}.sidebar{position:static}.rank-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.rank-grid{grid-template-columns:repeat(2,1fr)}.dgrid{grid-template-columns:repeat(2,1fr)}.nav-a{display:none}}
+</style>
 </head>
 <body>
-
+<div class="orbs"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
 <div class="wrap">
-  <header>
-    <div class="logo-badge">⬡ MC Shop</div>
-    <h1>ПРИВИЛЕГИИ</h1>
-    <p>автоматическая выдача · защищённая оплата · luckperms</p>
-  </header>
 
-  <!-- Step indicator -->
-  <div class="steps">
-    <div class="step active" id="s1"><span>01</span>Данные</div>
-    <div class="step" id="s2"><span>02</span>Привилегия</div>
-    <div class="step" id="s3"><span>03</span>Срок</div>
-    <div class="step" id="s4"><span>04</span>Оплата</div>
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-logo">Eternity</span>
+    <div class="nav-links">
+      <span class="nav-a">Главная</span>
+      <span class="nav-a on">Магазин</span>
+      <span class="nav-a">Правила</span>
+      <span class="nav-a">Discord</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-help">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Вопросы
+      </span>
+    </div>
   </div>
+</nav>
 
-  <!-- Step 1: Ник -->
-  <div class="card" id="block-nick">
-    <div class="card-title">Ваш ник в Minecraft</div>
-    <label for="nick">Nickname</label>
-    <input type="text" id="nick" placeholder="Steve" maxlength="16" autocomplete="off" />
-    <div class="err-msg" id="nick-err">Введите корректный ник (3–16 символов)</div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Магазин привилегий</div>
+    <h1>Eternity</h1>
+    <div class="hero-sub">Minecraft Server</div>
+    <p class="hero-desc">Выберите привилегию — она выдаётся автоматически сразу после оплаты.</p>
   </div>
+</div>
 
-  <!-- Step 2: Привилегия -->
-  <div class="card" id="block-priv">
-    <div class="card-title">Выберите привилегию</div>
-    <div class="priv-grid">
+<!-- LAYOUT -->
+<div class="layout">
+<div>
 
-      <div class="priv-card vip" data-priv="vip" data-base="149" onclick="selectPriv(this)">
-        <div class="selected-check">✓</div>
-        <div class="priv-name">VIP</div>
-        <div class="priv-price">от 149 ₽ / 30 дней</div>
-        <ul class="priv-features">
-          <li>Цветной ник</li>
+  <!-- Rank cards -->
+  <div class="sh"><h2>Выберите привилегию</h2></div>
+  <div class="rank-grid">
+
+    <!-- SPONSOR -->
+    <div class="rcard sponsor" data-priv="sponsor" data-base="99" onclick="pickPriv(this)">
+      <div class="rc-strip"></div>
+      <div class="rc-img">
+        <!-- Сюда можно вставить <img src="..."> -->
+      </div>
+      <div class="rc-body">
+        <div class="rc-tag">Sponsor</div>
+        <div class="rc-name">Спонсор</div>
+        <div class="rc-price">99 ₽ <em>/ мес</em></div>
+      </div>
+      <div class="rc-tick">✓</div>
+      <div class="rc-tooltip">
+        <div class="tooltip-title">Спонсор</div>
+        <ul class="tooltip-list">
+          <li>Цветной ник в чате</li>
+          <li>Префикс [Спонсор]</li>
+          <li>Кит раз в 7 дней</li>
           <li>Приоритетный вход</li>
+        </ul>
+        <button class="tooltip-select" onclick="pickPrivFromTooltip(event,'sponsor',99)">Выбрать</button>
+      </div>
+    </div>
+
+    <!-- ELITE -->
+    <div class="rcard elite" data-priv="elite" data-base="199" onclick="pickPriv(this)">
+      <div class="rc-strip"></div>
+      <div class="rc-img">
+        <!-- Сюда можно вставить <img src="..."> -->
+      </div>
+      <div class="rc-body">
+        <div class="rc-tag">Elite</div>
+        <div class="rc-name">Элита</div>
+        <div class="rc-price">199 ₽ <em>/ мес</em></div>
+      </div>
+      <div class="rc-tick">✓</div>
+      <div class="rc-tooltip">
+        <div class="tooltip-title">Элита</div>
+        <ul class="tooltip-list">
+          <li>Всё из Спонсора</li>
           <li>Кит раз в 3 дня</li>
           <li>/nick, /hat</li>
+          <li>Частный дом (+5 слотов)</li>
         </ul>
+        <button class="tooltip-select" onclick="pickPrivFromTooltip(event,'elite',199)">Выбрать</button>
       </div>
+    </div>
 
-      <div class="priv-card prem" data-priv="premium" data-base="299" onclick="selectPriv(this)">
-        <div class="selected-check">✓</div>
-        <div class="priv-name">PREMIUM</div>
-        <div class="priv-price">от 299 ₽ / 30 дней</div>
-        <ul class="priv-features">
-          <li>Всё из VIP</li>
-          <li>Полёт в лобби</li>
-          <li>Кит раз в день</li>
-          <li>/fly, /feed, /god</li>
+    <!-- HEAD -->
+    <div class="rcard head" data-priv="head" data-base="349" onclick="pickPriv(this)">
+      <div class="rc-strip"></div>
+      <div class="rc-img">
+        <!-- Сюда можно вставить <img src="..."> -->
+      </div>
+      <div class="rc-body">
+        <div class="rc-tag">Head</div>
+        <div class="rc-name">Глава</div>
+        <div class="rc-price">349 ₽ <em>/ мес</em></div>
+      </div>
+      <div class="rc-tick">✓</div>
+      <div class="rc-tooltip">
+        <div class="tooltip-title">Глава</div>
+        <ul class="tooltip-list">
+          <li>Всё из Элиты</li>
+          <li>Полёт в лобби /fly</li>
+          <li>Кит каждый день</li>
+          <li>/feed, /heal</li>
+          <li>Доступ к приватным зонам</li>
         </ul>
+        <button class="tooltip-select" onclick="pickPrivFromTooltip(event,'head',349)">Выбрать</button>
       </div>
+    </div>
 
+    <!-- HERO -->
+    <div class="rcard hero" data-priv="hero" data-base="599" onclick="pickPriv(this)">
+      <div class="rc-strip"></div>
+      <div class="rc-img">
+        <!-- Сюда можно вставить <img src="..."> -->
+      </div>
+      <div class="rc-body">
+        <div class="rc-tag">Hero</div>
+        <div class="rc-name">Герой</div>
+        <div class="rc-price">599 ₽ <em>/ мес</em></div>
+      </div>
+      <div class="rc-tick">✓</div>
+      <div class="rc-tooltip">
+        <div class="tooltip-title">Герой</div>
+        <ul class="tooltip-list">
+          <li>Все привилегии Главы</li>
+          <li>/god, /fly везде</li>
+          <li>Золотой префикс [Герой]</li>
+          <li>Уникальный скин частиц</li>
+          <li>Личный варп /warp</li>
+        </ul>
+        <button class="tooltip-select" onclick="pickPrivFromTooltip(event,'hero',599)">Выбрать</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Duration -->
+  <div class="sh"><h2>Срок действия</h2></div>
+  <div class="dgrid">
+    <div class="dbtn" data-days="30" data-mult="1.0" onclick="pickDur(this)">
+      <span class="dnum">30</span><span class="dlabel">дней</span>
+    </div>
+    <div class="dbtn hs" data-days="60" data-mult="1.75" onclick="pickDur(this)">
+      <div class="dsave">−12%</div>
+      <span class="dnum">60</span><span class="dlabel">дней</span>
+    </div>
+    <div class="dbtn hs" data-days="90" data-mult="2.4" onclick="pickDur(this)">
+      <div class="dsave">−20%</div>
+      <span class="dnum">90</span><span class="dlabel">дней</span>
+    </div>
+    <div class="dbtn hs" data-days="180" data-mult="4.2" onclick="pickDur(this)">
+      <div class="dsave">−30%</div>
+      <span class="dnum">180</span><span class="dlabel">дней</span>
     </div>
   </div>
 
-  <!-- Step 3: Срок -->
-  <div class="card" id="block-dur">
-    <div class="card-title">Срок действия</div>
-    <div class="dur-row">
-      <div class="dur-btn" data-days="30" data-mult="1.0" onclick="selectDur(this)">
-        <span class="days">30</span>дней
-      </div>
-      <div class="dur-btn" data-days="60" data-mult="1.8" onclick="selectDur(this)">
-        <span class="days">60</span>дней
-      </div>
-      <div class="dur-btn" data-days="90" data-mult="2.5" onclick="selectDur(this)">
-        <span class="days">90</span>дней
-      </div>
-      <div class="dur-btn" data-days="180" data-mult="4.5" onclick="selectDur(this)">
-        <span class="days">180</span>дней
-      </div>
-    </div>
+  <!-- Nick -->
+  <div class="sh"><h2>Ваш никнейм</h2></div>
+  <div style="margin-bottom:8px">
+    <label class="flabel" for="nick">Никнейм в Minecraft</label>
+    <input class="ninput" type="text" id="nick" placeholder="Например: Steve_2007" maxlength="16" autocomplete="off" spellcheck="false"/>
   </div>
 
-  <!-- Step 4: Итог + оплата -->
-  <div class="card" id="block-pay">
-    <div class="card-title">Итог заказа</div>
-    <div class="summary-row">
-      <span class="key">Ник</span>
-      <span class="val" id="sum-nick">—</span>
-    </div>
-    <div class="summary-row">
-      <span class="key">Привилегия</span>
-      <span class="val" id="sum-priv">—</span>
-    </div>
-    <div class="summary-row">
-      <span class="key">Срок</span>
-      <span class="val" id="sum-dur">—</span>
-    </div>
-    <div class="summary-row">
-      <span class="key">Итого</span>
-      <span class="price" id="sum-price">— ₽</span>
-    </div>
-    <button class="btn-pay" id="btn-pay" onclick="pay()" disabled>
-      <span>Оплатить через DonationAlerts</span>
-    </button>
-    <p class="notice">🔒 Привилегия выдаётся автоматически после подтверждения платежа</p>
-  </div>
 </div>
 
-<!-- Modal success -->
-<div class="modal-overlay" id="modal">
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="scard">
+    <div class="scard-head">Ваш заказ</div>
+    <div class="scard-body">
+      <div id="sempty" class="sempty">Ничего не выбрано</div>
+      <div id="srows" style="display:none">
+        <div class="srow"><span class="k">Ник</span><span class="v" id="sn">—</span></div>
+        <div class="srow"><span class="k">Привилегия</span><span class="v" id="sp">—</span></div>
+        <div class="srow"><span class="k">Срок</span><span class="v" id="sd">—</span></div>
+      </div>
+      <div class="price-block">
+        <span class="price-lbl">Итого</span>
+        <span class="price-num" id="sprice">— ₽</span>
+      </div>
+      <button class="paybtn" id="paybtn" disabled onclick="openModal()">Оплатить →</button>
+    </div>
+  </div>
+
+  <div class="scard">
+    <div class="trust-rows">
+      <div class="trow"><div class="ticon tg">✓</div>Выдача за ~5 секунд автоматически</div>
+      <div class="trow"><div class="ticon tg">✓</div>Снятие по истечении срока</div>
+      <div class="trow"><div class="ticon tg">✓</div>Защита от двойной оплаты</div>
+      <div class="trow"><div class="ticon tp">⚡</div>RCON + LuckPerms интеграция</div>
+    </div>
+  </div>
+</aside>
+</div>
+
+<div class="footer">
+  © 2026 Eternity &nbsp;·&nbsp;
+  <span style="color:var(--acc4)">Правила возврата</span> &nbsp;·&nbsp;
+  <span style="color:var(--acc4)">Discord</span>
+</div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal">
   <div class="modal">
-    <div class="modal-icon">✦</div>
-    <h2>Переход к оплате</h2>
-    <p id="modal-text">Вы будете перенаправлены на страницу оплаты.<br>После успешного платежа привилегия выдастся автоматически.</p>
-    <button class="btn-pay" onclick="doRedirect()"><span>Продолжить →</span></button>
+    <div class="modal-icon">⚔</div>
+    <h2>Подтверждение заказа</h2>
+    <p id="mbody"></p>
+    <div class="modal-btns">
+      <button class="mbtn-c" onclick="closeModal()">Отмена</button>
+      <button class="mbtn-g" onclick="doRedirect()">Оплатить →</button>
+    </div>
   </div>
 </div>
+<div class="toast" id="toast"></div>
 
 <script>
-  let selPriv = null, selDays = null, selMult = null, selBase = null;
-  let payUrl = '';
+let sP=null,sB=null,sD=null,sM=null,pUrl='';
 
-  // Ник — обновить summary на ввод
-  document.getElementById('nick').addEventListener('input', updateSummary);
+const LABELS={sponsor:'Спонсор',elite:'Элита',head:'Глава',hero:'Герой'};
 
-  function selectPriv(el) {
-    document.querySelectorAll('.priv-card').forEach(c => c.classList.remove('selected'));
-    el.classList.add('selected');
-    selPriv = el.dataset.priv;
-    selBase = parseInt(el.dataset.base);
-    markStep('s2');
-    updateSummary();
-  }
+document.getElementById('nick').addEventListener('input',upd);
 
-  function selectDur(el) {
-    document.querySelectorAll('.dur-btn').forEach(b => b.classList.remove('selected'));
-    el.classList.add('selected');
-    selDays = parseInt(el.dataset.days);
-    selMult = parseFloat(el.dataset.mult);
-    markStep('s3');
-    updateSummary();
-  }
+function nickOk(){return /^[a-zA-Z0-9_]{3,16}$/.test(document.getElementById('nick').value.trim())}
 
-  function markStep(id) {
-    const order = ['s1','s2','s3','s4'];
-    const idx = order.indexOf(id);
-    order.forEach((s,i) => {
-      const el = document.getElementById(s);
-      el.classList.remove('active','done');
-      if (i < idx) el.classList.add('done');
-      else if (i === idx) el.classList.add('active');
-    });
-  }
+function pickPriv(el){
+  // only fire if NOT clicking inside tooltip
+  document.querySelectorAll('.rcard').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+  sP=el.dataset.priv; sB=+el.dataset.base; upd();
+}
 
-  function updateSummary() {
-    const nick = document.getElementById('nick').value.trim();
-    document.getElementById('sum-nick').textContent = nick || '—';
-    document.getElementById('sum-priv').textContent = selPriv
-      ? selPriv.charAt(0).toUpperCase() + selPriv.slice(1) : '—';
-    document.getElementById('sum-dur').textContent  = selDays ? selDays + ' дней' : '—';
+function pickPrivFromTooltip(e,priv,base){
+  e.stopPropagation();
+  document.querySelectorAll('.rcard').forEach(c=>c.classList.remove('sel'));
+  const card=document.querySelector(`.rcard[data-priv="${priv}"]`);
+  if(card)card.classList.add('sel');
+  sP=priv; sB=base; upd();
+}
 
-    if (selBase && selMult) {
-      const price = Math.round(selBase * selMult);
-      document.getElementById('sum-price').textContent = price + ' ₽';
-    }
+function pickDur(el){
+  document.querySelectorAll('.dbtn').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on'); sD=+el.dataset.days; sM=+el.dataset.mult; upd();
+}
 
-    const valid = nick.length >= 3 && nick.length <= 16
-                  && /^[a-zA-Z0-9_]+$/.test(nick)
-                  && selPriv && selDays;
+function upd(){
+  const n=document.getElementById('nick').value.trim();
+  const any=sP||sD||n;
+  document.getElementById('sempty').style.display=any?'none':'block';
+  document.getElementById('srows').style.display=any?'block':'none';
+  document.getElementById('sn').textContent=n||'—';
+  document.getElementById('sp').textContent=sP?LABELS[sP]:'—';
+  document.getElementById('sd').textContent=sD?sD+' дней':'—';
+  document.getElementById('sprice').textContent=(sB&&sM)?Math.round(sB*sM).toLocaleString('ru')+' ₽':'— ₽';
+  document.getElementById('paybtn').disabled=!(nickOk()&&sP&&sD);
+}
 
-    document.getElementById('btn-pay').disabled = !valid;
-    if (valid) markStep('s4');
-  }
-
-  function pay() {
-    const nick = document.getElementById('nick').value.trim();
-    if (!nick || !selPriv || !selDays) return;
-
-    const price = Math.round(selBase * selMult);
-    // Формируем comment для DonationAlerts, чтобы webhook мог распознать заказ
-    const comment = `MC:${nick}:${selPriv}:${selDays}d`;
-
-    // DonationAlerts URL — замените YOUR_DA_USER на ваш username
-    payUrl = `https://www.donationalerts.com/r/YOUR_DA_USER`
-           + `?comment=${encodeURIComponent(comment)}`
-           + `&sum=${price}`;
-
-    document.getElementById('modal-text').innerHTML =
-      `Ник: <b style="color:var(--accent2)">${nick}</b> · `
-      + `<b style="color:var(--accent2)">${selPriv.toUpperCase()}</b> · `
-      + `<b style="color:var(--accent2)">${selDays} дней</b><br>`
-      + `Сумма: <b style="color:var(--accent2)">${price} ₽</b><br><br>`
-      + `После оплаты привилегия выдастся автоматически.`;
-
-    document.getElementById('modal').classList.add('open');
-  }
-
-  function doRedirect() {
-    document.getElementById('modal').classList.remove('open');
-    window.open(payUrl, '_blank');
-  }
-
-  // Close modal on overlay click
-  document.getElementById('modal').addEventListener('click', function(e) {
-    if (e.target === this) this.classList.remove('open');
-  });
+function openModal(){
+  const n=document.getElementById('nick').value.trim();
+  const price=Math.round(sB*sM);
+  const colors={sponsor:'#818cf8',elite:'#c084fc',head:'#38bdf8',hero:'#fbbf24'};
+  document.getElementById('mbody').innerHTML=
+    `Ник: <strong style="color:#fff">${n}</strong><br>`+
+    `Привилегия: <strong style="color:${colors[sP]}">${LABELS[sP]}</strong><br>`+
+    `Срок: <strong style="color:#fff">${sD} дней</strong><br><br>`+
+    `К оплате: <strong style="color:#fff;font-size:20px;font-family:'Cormorant Garamond',serif">${price.toLocaleString('ru')} ₽</strong>`;
+  pUrl=`https://www.donationalerts.com/r/YOUR_DA_USER?comment=${encodeURIComponent('MC:'+n+':'+sP+':'+sD+'d')}&sum=${price}`;
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+function doRedirect(){closeModal();window.open(pUrl,'_blank')}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeModal()});
 </script>
 </body>
 </html>
