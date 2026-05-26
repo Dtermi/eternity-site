@@ -51,27 +51,19 @@ async function sendRcon(command) {
 
 // ── Выдача привилегии ─────────────────────────────────────────
 async function grantPrivilege(nick, priv, days) {
-  // lp user <nick> parent addtemp <group> <days>d accumulate
-  const group   = priv.toLowerCase(); // vip / premium
-  const cmd     = `lp user ${nick} parent addtemp ${group} ${days}d accumulate`;
+  const group = priv.toLowerCase();
+  const cmd   = `lp user ${nick} parent addtemp ${group} ${days}d accumulate`;
   await sendRcon(cmd);
   console.log(`[GRANT] ${nick} → ${priv} x${days}d`);
 }
 
 // ── Цены (минимальные суммы для проверки) ─────────────────────
+// Мультипликаторы из index.html: 30d×1.0 | 60d×1.75 | 90d×2.4 | 180d×4.2
 const PRICES = {
-  vip: {
-    30:  149,
-    60:  268,
-    90:  373,
-    180: 671,
-  },
-  premium: {
-    30:  299,
-    60:  538,
-    90:  748,
-    180: 1346,
-  },
+  sponsor: { 30: 99,  60: 173,  90: 238,  180: 416  },
+  elite:   { 30: 199, 60: 348,  90: 478,  180: 836  },
+  head:    { 30: 349, 60: 611,  90: 838,  180: 1466 },
+  hero:    { 30: 599, 60: 1048, 90: 1438, 180: 2516 },
 };
 
 function minPrice(priv, days) {
@@ -89,8 +81,8 @@ app.post('/webhook/donationalerts', async (req, res) => {
     const body = req.body;
 
     // 1. Верификация подписи (DA передаёт X-Donation-Secret)
-    const secret    = req.headers['x-donation-secret'] || body.secret || '';
-    const expected  = process.env.DA_WEBHOOK_SECRET || '';
+    const secret   = req.headers['x-donation-secret'] || body.secret || '';
+    const expected = process.env.DA_WEBHOOK_SECRET || '';
     if (expected && secret !== expected) {
       console.warn('[WEBHOOK] Bad secret');
       return res.status(403).json({ error: 'forbidden' });
@@ -120,7 +112,7 @@ app.post('/webhook/donationalerts', async (req, res) => {
     const priv = match[2].toLowerCase();
     const days = parseInt(match[3]);
 
-    if (!['vip','premium'].includes(priv)) {
+    if (!['sponsor', 'elite', 'head', 'hero'].includes(priv)) {
       return res.json({ ok: false, reason: 'unknown_priv' });
     }
 
@@ -139,10 +131,9 @@ app.post('/webhook/donationalerts', async (req, res) => {
     }
 
     // 6. Сохраняем в БД
-    const insert = db.prepare(
+    db.prepare(
       'INSERT INTO orders (da_id, nick, priv, days, amount, status) VALUES (?,?,?,?,?,?)'
-    );
-    insert.run(daId, nick, priv, days, amount, 'pending');
+    ).run(daId, nick, priv, days, amount, 'pending');
 
     // 7. Выдаём привилегию через RCON
     await grantPrivilege(nick, priv, days);
@@ -154,7 +145,6 @@ app.post('/webhook/donationalerts', async (req, res) => {
     res.json({ ok: true });
   } catch (err) {
     console.error('[WEBHOOK FATAL]', err);
-    // Помечаем ошибку (если уже есть запись)
     try { db.prepare("UPDATE orders SET status='error' WHERE status='pending'").run(); } catch {}
     res.status(500).json({ error: 'internal' });
   }
@@ -175,7 +165,7 @@ app.post('/admin/grant', async (req, res) => {
   }
 });
 
-// ── Статус заказов (для отладки) ─────────────────────────────
+// ── Статус заказов (для отладки) ──────────────────────────────
 app.get('/admin/orders', (req, res) => {
   if (req.query.secret !== process.env.ADMIN_SECRET) {
     return res.status(403).json({ error: 'forbidden' });
