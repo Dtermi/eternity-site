@@ -92,18 +92,16 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 }
 .rcard:hover{transform:translateY(-4px)}
 
-/* per-rank accent colours */
-.rcard.sponsor  {--rc:#6366f1;--rcl:#818cf8;--rcdim:#6366f115;--rcgold:false}
-.rcard.elite    {--rc:#7c3aed;--rcl:#a855f7;--rcdim:#7c3aed15}
-.rcard.head     {--rc:#0ea5e9;--rcl:#38bdf8;--rcdim:#0ea5e915}
-.rcard.hero     {--rc:#f59e0b;--rcl:#fbbf24;--rcdim:#f59e0b15}
+.rcard.sponsor{--rc:#6366f1;--rcl:#818cf8;--rcdim:#6366f115}
+.rcard.elite  {--rc:#7c3aed;--rcl:#a855f7;--rcdim:#7c3aed15}
+.rcard.head   {--rc:#0ea5e9;--rcl:#38bdf8;--rcdim:#0ea5e915}
+.rcard.hero   {--rc:#f59e0b;--rcl:#fbbf24;--rcdim:#f59e0b15}
 
 .rcard:hover,.rcard.sel{border-color:var(--rc)!important}
 .rcard.sel{box-shadow:0 0 0 1px var(--rc),0 16px 40px color-mix(in srgb,var(--rc) 20%,transparent)}
 
 .rc-strip{height:3px;background:linear-gradient(90deg,var(--rc),var(--rcl));flex-shrink:0}
 
-/* image placeholder */
 .rc-img{
   width:100%;aspect-ratio:1/1;
   background:linear-gradient(160deg,var(--rcdim),#0c0a1800);
@@ -131,7 +129,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .rc-price{font-family:var(--fh);font-size:16px;color:#fff;font-weight:600}
 .rc-price em{font-style:normal;font-size:11px;color:var(--txt3);font-weight:400;font-family:var(--fi)}
 
-/* tick */
 .rc-tick{
   position:absolute;top:10px;right:10px;
   width:18px;height:18px;border-radius:50%;
@@ -140,7 +137,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 }
 .rcard.sel .rc-tick{display:flex}
 
-/* ── HOVER TOOLTIP (abilities) ── */
+/* ── HOVER TOOLTIP ── */
 .rc-tooltip{
   position:absolute;inset:0;
   background:color-mix(in srgb,var(--bg) 92%,var(--rc) 8%);
@@ -301,9 +298,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <!-- SPONSOR -->
     <div class="rcard sponsor" data-priv="sponsor" data-base="99" onclick="pickPriv(this)">
       <div class="rc-strip"></div>
-      <div class="rc-img">
-        <!-- Сюда можно вставить <img src="..."> -->
-      </div>
+      <div class="rc-img"></div>
       <div class="rc-body">
         <div class="rc-tag">Sponsor</div>
         <div class="rc-name">Спонсор</div>
@@ -325,9 +320,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <!-- ELITE -->
     <div class="rcard elite" data-priv="elite" data-base="199" onclick="pickPriv(this)">
       <div class="rc-strip"></div>
-      <div class="rc-img">
-        <!-- Сюда можно вставить <img src="..."> -->
-      </div>
+      <div class="rc-img"></div>
       <div class="rc-body">
         <div class="rc-tag">Elite</div>
         <div class="rc-name">Элита</div>
@@ -349,9 +342,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <!-- HEAD -->
     <div class="rcard head" data-priv="head" data-base="349" onclick="pickPriv(this)">
       <div class="rc-strip"></div>
-      <div class="rc-img">
-        <!-- Сюда можно вставить <img src="..."> -->
-      </div>
+      <div class="rc-img"></div>
       <div class="rc-body">
         <div class="rc-tag">Head</div>
         <div class="rc-name">Глава</div>
@@ -374,9 +365,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <!-- HERO -->
     <div class="rcard hero" data-priv="hero" data-base="599" onclick="pickPriv(this)">
       <div class="rc-strip"></div>
-      <div class="rc-img">
-        <!-- Сюда можно вставить <img src="..."> -->
-      </div>
+      <div class="rc-img"></div>
       <div class="rc-body">
         <div class="rc-tag">Hero</div>
         <div class="rc-name">Герой</div>
@@ -488,7 +477,6 @@ document.getElementById('nick').addEventListener('input',upd);
 function nickOk(){return /^[a-zA-Z0-9_]{3,16}$/.test(document.getElementById('nick').value.trim())}
 
 function pickPriv(el){
-  // only fire if NOT clicking inside tooltip
   document.querySelectorAll('.rcard').forEach(c=>c.classList.remove('sel'));
   el.classList.add('sel');
   sP=el.dataset.priv; sB=+el.dataset.base; upd();
